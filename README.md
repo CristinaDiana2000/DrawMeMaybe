@@ -25,4 +25,4 @@ Eine Kamera nimmt ein Foto einer Person auf, die Person gibt ihre Hobbys oder In
 | 👩‍💻 Cristina | AI/Frontend | Cartoonization AI, minimal Streamlit UI, hobby integration |
 | 👩‍💻 Muhammet | Image preprocessing, OpenCV | face detection, cropping, resizing, normalization, clean image ready for AI modul |
 | 🤖 Stephan | Robotics / Hardware | Roboterarm, SVG-Interpretation, Zeichnungslogik |
-| ALL| Integration/ROS | - Connect modules together (preprocessed image → AI → SVG → robot), Implement ROS nodes/topics if needed, Test full end-to-end pipeline. |
+| ALL| Integration/ROS | Connect modules together (preprocessed image → AI → SVG → robot), Implement ROS nodes/topics if needed, Test full end-to-end pipeline. |

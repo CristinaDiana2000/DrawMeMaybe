@@ -1,29 +1,29 @@
 # DrawMeMaybe
 
-**DrawMeMaybe** is an interactive project, that combines AI, Computer Vision and Robotic
-Eine Kamera nimmt ein Foto einer Person auf, die Person gibt ihre Hobbys oder Interessen an, und ein Roboterarm zeichnet anschließend ein **personalisiertes Cartoon-Portrait** dieser Person auf Papier.
+**DrawMeMaybe** is an interactive project that combines AI, computer vision, and robotics.
+A camera takes a photo of a person, the person provides their hobbies or interests, and a robotic arm then draws a personalized cartoon portrait of that person on paper.
 
-## 🧩 Funktionsweise
+## 🧩 How It Works
 
-### **1. Eingabe**
+### **1. Input**
 
-- 📸 Kamera nimmt ein Foto der Person auf  
-- ✍️ Benutzer gibt Stichwörter zu Hobbys / Interessen ein (z. B. „Fußball, Musik, Bücher“)
+- 📸 Camera captures a photo of the person
+- ✍️ User enters keywords describing hobbies/interests (e.g., “soccer, music, books”)
+  
+### **2. Processing**
 
-### **2. Verarbeitung**
+- 🧠 **Face Analysis**: Detect facial landmarks, shapes, and features
+- 💬 **Interest Analysis**: Analyze text input to select fitting visual elements
+- 🎨 **Cartoonization**: Generate a cartoon-style image using AI
 
-- 🧠 **Gesichtsanalyse:** Erkennung von Gesichtspunkten, Formen und Merkmalen
-- 💬 **Interessenanalyse:** Textanalyse der Hobbys, um passende visuelle Elemente zu wählen  
-- 🎨 **Cartoonisierung:** Generierung eines Cartoon-Stils durch KI
+### **3. Robotic Drawing**
 
-### **3. Roboterzeichnung**
-
-- ✏️ Das fertige Cartoon-Bild wird in **Vektorpfade (SVG)** konvertiert  
-- 🤖 Der **Roboterarm** zeichnet das Portrait mit Stift auf Papier  
+- ✏️ Convert the final cartoon image into vector paths (SVG)
+- 🤖 The robotic arm draws the portrait with a pen on paper
 
 ## 👥 Team
 
-| Name | Rolle | Verantwortungsbereich |
+| Name | Role | Responsibilities |
 |------|--------|------------------------|
 | 👩‍💻 Cristina | AI/Frontend | Cartoonization AI, minimal Streamlit UI, hobby integration |
 | 👩‍💻 Muhammet | Image preprocessing, OpenCV | face detection, cropping, resizing, normalization, clean image ready for AI modul |

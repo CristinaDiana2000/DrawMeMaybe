@@ -6,52 +6,28 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------------- LOAD BOOTSTRAP (safe) ----------------------
+# ---------------------- GLOBAL CSS ----------------------
 st.markdown("""
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GJpQFM9Cw5K9mXGx04f7xF"
-    crossorigin="anonymous"
-/>
-
 <style>
-/* --- BOOTSTRAP SAFETY RESET --- */
-body, html, .stApp {
-    font-family: "Poppins", sans-serif !important;
-    color: #000 !important;
-    background-color: #f5e3c3 !important;
-    background-image:
-        radial-gradient(circle at 20% 30%, #ff6f61 0%, transparent 40%),
-        radial-gradient(circle at 80% 20%, #00bcd4 0%, transparent 40%),
-        radial-gradient(circle at 30% 80%, #8bc34a 0%, transparent 40%),
-        radial-gradient(circle at 70% 70%, #ffeb3b 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, #e91e63 0%, transparent 40%) !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
-    background-attachment: fixed !important;
-    overflow: hidden !important;
-}
-
-/* Prevent Bootstrap from changing text sizes and colors */
-h1, h2, h3, h4, h5, h6, p, span, div {
-    color: #000 !important;
-    font-family: "Poppins", sans-serif !important;
-}
-
-/* Remove dark backgrounds Bootstrap might add */
-.container-fluid, .row, .col {
-    background: transparent !important;
-}
-
-/* --- YOUR EXISTING CUSTOM STYLES BELOW --- */
-
 /* Full gradient background */
 html, body, .stApp,
 body > div, body > div > div {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: "Poppins", sans-serif;
+    color: #000;
+    background-color: #f5e3c3;
+    background-image:
+        radial-gradient(circle at 20% 30%, #ff6f61 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, #00bcd4 0%, transparent 40%),
+        radial-gradient(circle at 30% 80%, #8bc34a 0%, transparent 40%),
+        radial-gradient(circle at 70% 70%, #ffeb3b 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, #e91e63 0%, transparent 40%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
 }
 
 /* Remove dark backgrounds */
@@ -62,6 +38,7 @@ body > div[data-testid="stStatusWidget"],
 div[data-testid="stBottomBlockContainer"],
 div[data-testid="stChatInput"],
 div[class*="st-emotion-cache"][class*="e4man"],
+
 div[class*="st-emotion-cache"][class*="e196pkbe"],
 div[class*="st-emotion-cache"][class*="e1gk92lc"],
 div[class*="st-emotion-cache"][class*="ex0cdmw"] {
@@ -131,6 +108,7 @@ h1 {
 .chat-left .avatar {
     order: -1;
     margin-right: 0.5rem;
+    width="64" height="64"
 }
 
 .chat-right {
@@ -162,44 +140,85 @@ h1 {
     justify-content: center;
 }
 
-/* Frosted input wrapper */
+/* Frosted input wrapper -> solid white fill for clear, readable input */
 div[data-testid="stChatInput"] {
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.1) !important;
+    /* keep rounded look but make it solid white so the input appears filled */
+    backdrop-filter: none;
+    background-color: #ffffff !important;
     border-radius: 24px;
-    padding: 0.5rem 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    max-width: 300px !important;
+    padding: 0.35rem 0.6rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    max-width: 380px !important;
     margin: 0 auto;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-/* Text input field */
+/* Text input field: compact, oval, filled white with clear black text */
 div[data-baseweb="input"] {
-    width: 200px !important;
-    height: 40px !important;
+    width: 240px !important;
+    height: 44px !important;
     margin: 0 auto !important;
-    padding: 0.4rem 0.8rem !important;
+    padding: 0.2rem 0.9rem !important;
     border: 2px solid #FFA500 !important;
     border-radius: 999px !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     display: flex;
     align-items: center;
 }
 
 /* Input text styling */
-div[data-baseweb="input"] input {
+/* Ensure the actual editable/input element is solid white and black text.
+   Some Streamlit/baseweb structures use input, textarea, or contenteditable divs;
+   target the likely variations and force a white background so there isn't a
+   dark inner box inside the white wrapper. */
+div[data-baseweb="input"] input,
+div[data-baseweb="input"] textarea,
+div[data-baseweb="input"] [contenteditable="true"],
+div[data-baseweb="input"] div[role="combobox"] {
     color: #000 !important;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    background: transparent !important;
+    background-color: #ffffff !important; /* force white fill */
     border: none !important;
     outline: none !important;
     width: 100%;
+}
+
+/* Also cover Streamlit/baseweb's base-input and the specific chat textarea
+   Streamlit sometimes uses data-baseweb="base-input" and the textarea
+   has data-testid="stChatInputTextArea" — target those to avoid a dark
+   inner box showing through. */
+div[data-baseweb="base-input"] textarea,
+textarea[data-testid="stChatInputTextArea"] {
+    background-color: #ffffff !important;
+    color: #000 !important;
+    border: none !important;
+    outline: none !important;
+    resize: none !important;
+    width: 100%;
+}
+
+/* Make Streamlit/baseweb wrapper elements inside the chat input white too
+   - targets data-baseweb="textarea" and generic emotion-cache wrappers
+   - scoped under the chat input container to avoid global changes */
+div[data-testid="stChatInput"] div[data-baseweb="textarea"],
+div[data-testid="stChatInput"] div[data-baseweb="base-input"],
+div[data-testid="stChatInput"] div[data-baseweb="input"],
+div[data-testid="stChatInput"] [class^="st-emotion-cache"],
+div[data-testid="stChatInput"] [class*="st-emotion-cache"] {
+    background-color: #ffffff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    border-radius: 18px !important;
+}
+
+/* Placeholder color for readability */
+div[data-baseweb="input"] input::placeholder {
+    color: #6b6b6b !important;
+    opacity: 1 !important;
 }
 
 /* Send button */
@@ -218,6 +237,8 @@ button[data-testid="stChatInputSubmitButton"] {
 USER_ICON = "https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
 AI_ICON = "https://raw.githubusercontent.com/Cristina2000-hub/DrawMeMaybe/frontend/frontend/uploads/Designer%20(1).png"
 
+
+
 # ---------------------- HEADER ----------------------
 st.title("🎨 Rob Ross — Chat")
 
@@ -226,9 +247,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ---------------------- CHAT DISPLAY ----------------------
-st.markdown('<div class="container-fluid"><div class="row justify-content-center"><div class="col-md-8">', unsafe_allow_html=True)
 st.markdown('<div class="chat-scroll">', unsafe_allow_html=True)
-
 for msg in st.session_state.messages:
     if msg["role"] == "assistant":
         st.markdown(f"""
@@ -244,8 +263,7 @@ for msg in st.session_state.messages:
             <img src="{USER_ICON}" class="avatar">
         </div>
         """, unsafe_allow_html=True)
-
-st.markdown('</div></div></div></div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
 # ---------------------- USER INPUT ----------------------
 prompt = st.chat_input("Tell me about your hobbies or interests...")

@@ -201,6 +201,43 @@ textarea[data-testid="stChatInputTextArea"] {
     width: 100%;
 }
 
+/* Remove orange focus/frame when the input is focused */
+div[data-baseweb="input"] input:focus,
+div[data-baseweb="input"] textarea:focus,
+div[data-baseweb="base-input"] textarea:focus,
+textarea[data-testid="stChatInputTextArea"]:focus,
+div[data-testid="stChatInput"] [contenteditable="true"]:focus,
+div[data-baseweb="input"]:focus,
+div[data-baseweb="base-input"]:focus,
+div[data-testid="stChatInput"] :focus {
+    outline: none !important;
+    box-shadow: none !important;
+    /* keep the visible border matching the white background so no orange frame appears */
+    border-color: #ffffff !important;
+}
+
+/* Also remove focus-visible (accessibility) ring if set by the browser/framework */
+div[data-baseweb="input"] input:focus-visible,
+div[data-baseweb="input"] textarea:focus-visible,
+textarea[data-testid="stChatInputTextArea"]:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ffffff !important;
+}
+
+/* Accessible keyboard-only focus indicator: subtle and high-contrast
+   This appears only for keyboard users via :focus-visible and replaces
+   the orange ring with a subtle dark outline. Scoped under the chat input. */
+div[data-testid="stChatInput"] textarea:focus-visible,
+div[data-testid="stChatInput"] input:focus-visible,
+div[data-baseweb="input"] input:focus-visible,
+textarea[data-testid="stChatInputTextArea"]:focus-visible,
+div[data-baseweb="base-input"] textarea:focus-visible {
+    outline: 2px solid rgba(0,0,0,0.85) !important; /* clear, high contrast */
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.06) !important; /* subtle halo */
+    border-color: rgba(0,0,0,0.85) !important;
+}
+
 /* Make Streamlit/baseweb wrapper elements inside the chat input white too
    - targets data-baseweb="textarea" and generic emotion-cache wrappers
    - scoped under the chat input container to avoid global changes */
@@ -257,9 +294,14 @@ for msg in st.session_state.messages:
         </div>
         """, unsafe_allow_html=True)
     else:
+        # If this message matches the saved hobby, render it bold
+        content_html = msg["content"]
+        if "hobby" in st.session_state and st.session_state.hobby == msg["content"]:
+            content_html = f"<strong>{msg['content']}</strong>"
+
         st.markdown(f"""
         <div class="chat-bubble chat-right">
-            <div class="bubble">{msg["content"]}</div>
+            <div class="bubble">{content_html}</div>
             <img src="{USER_ICON}" class="avatar">
         </div>
         """, unsafe_allow_html=True)
@@ -269,11 +311,14 @@ st.markdown('</div>', unsafe_allow_html=True)
 prompt = st.chat_input("Tell me about your hobbies or interests...")
 
 if prompt:
+    # Save the user's input as the current "hobby" and append to messages
+    st.session_state.hobby = prompt
     st.session_state.messages.append({"role": "user", "content": prompt})
 
+    # Render the user's message; show hobby in bold when it's the saved one
     st.markdown(f"""
         <div class="chat-bubble chat-right">
-            <div class="bubble">{prompt}</div>
+            <div class="bubble"><strong>{prompt}</strong></div>
             <img src="{USER_ICON}" class="avatar">
         </div>
     """, unsafe_allow_html=True)

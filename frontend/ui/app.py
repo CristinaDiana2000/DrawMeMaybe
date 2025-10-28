@@ -6,28 +6,52 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------------- GLOBAL CSS ----------------------
+# ---------------------- LOAD BOOTSTRAP (safe) ----------------------
 st.markdown("""
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GJpQFM9Cw5K9mXGx04f7xF"
+    crossorigin="anonymous"
+/>
+
 <style>
+/* --- BOOTSTRAP SAFETY RESET --- */
+body, html, .stApp {
+    font-family: "Poppins", sans-serif !important;
+    color: #000 !important;
+    background-color: #f5e3c3 !important;
+    background-image:
+        radial-gradient(circle at 20% 30%, #ff6f61 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, #00bcd4 0%, transparent 40%),
+        radial-gradient(circle at 30% 80%, #8bc34a 0%, transparent 40%),
+        radial-gradient(circle at 70% 70%, #ffeb3b 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, #e91e63 0%, transparent 40%) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    overflow: hidden !important;
+}
+
+/* Prevent Bootstrap from changing text sizes and colors */
+h1, h2, h3, h4, h5, h6, p, span, div {
+    color: #000 !important;
+    font-family: "Poppins", sans-serif !important;
+}
+
+/* Remove dark backgrounds Bootstrap might add */
+.container-fluid, .row, .col {
+    background: transparent !important;
+}
+
+/* --- YOUR EXISTING CUSTOM STYLES BELOW --- */
+
 /* Full gradient background */
 html, body, .stApp,
 body > div, body > div > div {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: "Poppins", sans-serif;
-    color: #000;
-    background-color: #f5e3c3;
-    background-image:
-        radial-gradient(circle at 20% 30%, #ff6f61 0%, transparent 40%),
-        radial-gradient(circle at 80% 20%, #00bcd4 0%, transparent 40%),
-        radial-gradient(circle at 30% 80%, #8bc34a 0%, transparent 40%),
-        radial-gradient(circle at 70% 70%, #ffeb3b 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, #e91e63 0%, transparent 40%);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    overflow: hidden;
 }
 
 /* Remove dark backgrounds */
@@ -107,7 +131,6 @@ h1 {
 .chat-left .avatar {
     order: -1;
     margin-right: 0.5rem;
-    width="64" height="64"
 }
 
 .chat-right {
@@ -153,7 +176,7 @@ div[data-testid="stChatInput"] {
     gap: 0.5rem;
 }
 
-/* Text input field: compact, oval, transparent, blurry, orange-framed, black text */
+/* Text input field */
 div[data-baseweb="input"] {
     width: 200px !important;
     height: 40px !important;
@@ -195,8 +218,6 @@ button[data-testid="stChatInputSubmitButton"] {
 USER_ICON = "https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
 AI_ICON = "https://raw.githubusercontent.com/Cristina2000-hub/DrawMeMaybe/frontend/frontend/uploads/Designer%20(1).png"
 
-
-
 # ---------------------- HEADER ----------------------
 st.title("🎨 Rob Ross — Chat")
 
@@ -205,7 +226,9 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ---------------------- CHAT DISPLAY ----------------------
+st.markdown('<div class="container-fluid"><div class="row justify-content-center"><div class="col-md-8">', unsafe_allow_html=True)
 st.markdown('<div class="chat-scroll">', unsafe_allow_html=True)
+
 for msg in st.session_state.messages:
     if msg["role"] == "assistant":
         st.markdown(f"""
@@ -221,7 +244,8 @@ for msg in st.session_state.messages:
             <img src="{USER_ICON}" class="avatar">
         </div>
         """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+
+st.markdown('</div></div></div></div>', unsafe_allow_html=True)
 
 # ---------------------- USER INPUT ----------------------
 prompt = st.chat_input("Tell me about your hobbies or interests...")

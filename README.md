@@ -29,3 +29,9 @@ Eine Kamera nimmt ein Foto einer Person auf, die Person gibt ihre Hobbys oder In
 | 👩‍💻 Muhammet | Image preprocessing, OpenCV | face detection, cropping, resizing, normalization, clean image ready for AI modul |
 | 🤖 Stephan | Robotics / Hardware | Roboterarm, SVG-Interpretation, Zeichnungslogik |
 | ALL| Integration/ROS | Connect modules together (preprocessed image → AI → SVG → robot), Implement ROS nodes/topics if needed, Test full end-to-end pipeline. |
+
+
+
+image_preprocessing: 
+- Lade shape_predictor_68_face_landmarks.dat von dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
+- cmake um dlib zu installieren

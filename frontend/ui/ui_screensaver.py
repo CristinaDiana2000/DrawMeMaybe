@@ -7,7 +7,7 @@ def show_screensaver():
         position: fixed; inset: 0;
         display: flex; flex-direction: column;
         align-items: center; justify-content: center;
-        background: #f5e3c3;
+        background: #ffe8b5;
         z-index: 9998;  /* below the link overlay */
         -webkit-user-select: none; user-select: none;
         overflow: hidden;

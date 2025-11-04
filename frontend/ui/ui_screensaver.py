@@ -7,17 +7,10 @@ def show_screensaver():
         position: fixed; inset: 0;
         display: flex; flex-direction: column;
         align-items: center; justify-content: center;
-        background: #f5e3c3;
-        z-index: 9999;
+        background: #ffe8b5;
+        z-index: 9998;  /* below the link overlay */
         -webkit-user-select: none; user-select: none;
         overflow: hidden;
-        opacity: 1;
-        transform: translateY(0);
-        transition: opacity .35s ease, transform .35s ease;
-      }
-      .screensaver.fade-out {
-        opacity: 0;
-        transform: translateY(-8px);
       }
       .logo {
         width: min(60vw, 380px);
@@ -29,54 +22,33 @@ def show_screensaver():
         50% { transform: translateY(-12px); }
         100% { transform: translateY(0); }
       }
-      .overlay {
+
+      /* Full-screen clickable link */
+      .tap-link {
         position: fixed; inset: 0;
-        background: transparent;
-        cursor: pointer;
+        display: block;
         z-index: 10000;
+        background: rgba(0,0,0,0); /* transparent, but clickable */
+        cursor: pointer;
+        text-decoration: none;
       }
+
+      /* Make sure nothing else eats the click */
+      header, footer, [data-testid="stToolbar"] { pointer-events: none !important; }
     </style>
 
-    <div class="screensaver" id="screensaver-root">
+    <div class="screensaver">
       <img class="logo"
            src="https://raw.githubusercontent.com/Cristina2000-hub/DrawMeMaybe/frontend/frontend/uploads/Designer%20(1).png"
            alt="logo" />
       <div class="hint">👆 Tap anywhere to start</div>
-      <div id="tap-overlay" class="overlay" title="Start"></div>
     </div>
+
+    <!-- Full-screen anchor: navigates inside the iframe to ?touched=1 -->
+    <a class="tap-link" href="?touched=1" aria-label="Start"></a>
     """, unsafe_allow_html=True)
 
-    # JS: add fade-out class, then navigate to ?touched=1 after 350ms
-    st.markdown("""
-    <script>
-      (function () {
-        const overlay = document.getElementById("tap-overlay");
-        const root = document.getElementById("screensaver-root");
-        if (!overlay || !root) return;
-
-        function go() {
-          try {
-            root.classList.add("fade-out");
-            setTimeout(() => {
-              const url = new URL(window.location.href);
-              url.searchParams.set("touched", "1");
-              window.location.href = url.toString();
-            }, 350); // match CSS transition
-          } catch (e) {
-            root.classList.add("fade-out");
-            setTimeout(() => {
-              const sep = window.location.search ? "&" : "?";
-              window.location.href = window.location.href + sep + "touched=1";
-            }, 350);
-          }
-        }
-        overlay.addEventListener("click", go, { passive: true });
-        overlay.addEventListener("touchstart", go, { passive: true });
-      })();
-    </script>
-    """, unsafe_allow_html=True)
-
-    # Optional fallback button if JS is blocked
+    # Visible fallback if someone disables links somehow
     if st.button("Start 🎨", use_container_width=True):
         st.session_state.touched = True
         st.rerun()

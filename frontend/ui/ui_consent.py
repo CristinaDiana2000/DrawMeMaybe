@@ -16,7 +16,7 @@ def show_consent_form():
 
     st.markdown('<div class="consent-enter">', unsafe_allow_html=True)
 
-    st.title("🧾 Einverständniserklärung")
+    st.title("🧾 Consent Form")
     st.write(
         "Bitte bestätige, dass dein Foto und Text **ausschließlich** zur Erstellung "
         "einer personalisierten Zeichnung mit KI verarbeitet werden."

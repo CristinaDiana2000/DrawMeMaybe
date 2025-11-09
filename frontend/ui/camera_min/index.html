@@ -47,16 +47,15 @@
   <div class="status" id="status">Click “Enable camera” to start.</div>
 
   <script>
-    /* ---------- Streamlit messaging (apiVersion=1) ---------- */
+    /* ---------- Streamlit handshake (apiVersion=1) ---------- */
     const API = 1;
     function post(msg){ try{ parent.postMessage(msg, "*"); } catch(e){} }
     function setFrameHeight(h){ post({ isStreamlitMessage:true, type:"streamlit:resize", height:h, apiVersion:API }); }
     function setComponentValue(val){ post({ isStreamlitMessage:true, type:"streamlit:setComponentValue", value:val, apiVersion:API }); }
     function setReady(){ post({ isStreamlitMessage:true, type:"streamlit:componentReady", apiVersion:API }); }
-
     function bump(){ setFrameHeight(document.body.scrollHeight || 720); }
 
-    // Signal readiness & keep iframe alive
+    // Signal ready & keep iframe from collapsing
     window.addEventListener("DOMContentLoaded", () => {
       setReady(); bump();
       setTimeout(setReady, 50);
@@ -68,7 +67,7 @@
     window.addEventListener("resize", bump);
     setInterval(bump, 200);
 
-    /* ------------------- Camera logic (canvas-based) ------------------- */
+    /* ------------------- Camera (canvas-based preview) ------------------- */
     const btnEnable = document.getElementById("enable");
     const wrap = document.getElementById("wrap");
     const bar = document.getElementById("bar");

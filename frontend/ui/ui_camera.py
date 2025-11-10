@@ -2,7 +2,8 @@ import base64, re, os
 import streamlit as st
 import camera_min  # ← important: just import the module, not a subpath
 
-def show_camera_stage():
+def show_camera_stage(on_done=None):
+    st.header("📷 Camera")
     ss = st.session_state
     ss.setdefault("photo_captured", False)
     ss.setdefault("camera_photo_bytes", None)

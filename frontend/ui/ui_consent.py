@@ -136,12 +136,11 @@ def show_consent_form():
           outline: none !important;
       }
 
-      /* "Press Enter to apply" text schwarz */
-      [data-testid="stTextInput"] small,
-      [data-testid="stTextInput"] p,
-      [data-testid="stTextInputHelp"] {
+      /* "Press Enter to apply" Text wirklich schwarz in allen Streamlit-Versionen */
+        [data-testid="stTextInput"] *,
+        [data-testid="stTextInput"] :where(p, small, span, label) {
           color: #000 !important;
-      }
+        }
 
       /* Email-Link neutral */
       .no-link { color: inherit !important; text-decoration: none !important; pointer-events: none !important; }

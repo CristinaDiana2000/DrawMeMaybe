@@ -50,56 +50,103 @@ Non-participation will not result in any disadvantage.
 By selecting **Accept**, you confirm that you have read and understood the above and agree to the processing of your data as described.
 """
 
+# -------------------------------------------------------------------------
+# Helper functions
+# -------------------------------------------------------------------------
 def _ensure_session_bootstrap():
     if "session_id" not in st.session_state:
         st.session_state.session_id = str(uuid.uuid4())
     if "session_start" not in st.session_state:
         st.session_state.session_start = datetime.now(TZ).isoformat()
-    if "route" not in st.session_state:
-        st.session_state.route = "consent"
 
 def _now_iso():
     return datetime.now(TZ).isoformat()
 
 def _save_consent_to_db(payload: dict):
-    # db.insert(payload)  # <- enable when ready
+    # db.insert(payload)
     pass
 
+def _rerun():
+    """Compatibility rerun for all Streamlit versions."""
+    rerun_fn = getattr(st, "rerun", None) or getattr(st, "experimental_rerun", None)
+    if callable(rerun_fn):
+        rerun_fn()
+    else:
+        # Best-effort fallback if no programmatic rerun API is available
+        st.stop()
+
+# -------------------------------------------------------------------------
+# Main function
+# -------------------------------------------------------------------------
 def show_consent_form():
     _ensure_session_bootstrap()
 
     st.markdown("""
     <style>
-      /* --- layout + animation --- */
-      .consent-enter { animation: fadeInUp .3s ease both; }
-      @keyframes fadeInUp {
-          0% {opacity:0; transform: translateY(8px);}
-          100% {opacity:1; transform: translateY(0);}
+      /* --- Layout adjustments --- */
+      [data-testid="stAppViewContainer"] .main .block-container {
+          padding-top: 0.6rem !important;
+          padding-bottom: 1.0rem !important;
       }
+
+      .consent-enter { animation: fadeInUp .25s ease both; }
+      @keyframes fadeInUp {
+        0% {opacity: 0; transform: translateY(6px);}
+        100% {opacity: 1; transform: translateY(0);}
+      }
+
       .consent-box {
-          max-height: 45vh;
+          max-height: 55vh;
           overflow: auto;
-          padding: 0;
-          border: none;
+          margin-top: 0.2rem;
+          margin-bottom: 0.8rem;
           background: transparent;
       }
 
-      /* --- Fix 'Press Enter to apply' text color --- */
-      /* Works across Streamlit versions */
-      [data-testid="stTextInput"] p {
-          color: black !important;
+      /* --- Text Input appearance fixes --- */
+
+      /* Entfernt dunkle Wrapper-Hintergründe (verhindert "Halbmonde") */
+      [data-testid="stTextInput"] > div,
+      [data-testid="stTextInput"] > div > div {
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          overflow: visible !important;
+          border-radius: 0 !important;
       }
 
-      /* --- Prevent email link from being blue / clickable --- */
-      .no-link {
-          color: inherit !important;
-          text-decoration: none !important;
-          pointer-events: none !important;
+      /* Das eigentliche Input bleibt weiß */
+      [data-testid="stTextInput"] input {
+          background: #ffffff !important;
+          color: #111 !important;
+          border: 2px solid orange !important;
+          border-radius: 9999px !important;  /* pill form */
+          padding: 0.4rem 0.8rem !important;
+          box-shadow: none !important;
+          outline: none !important;
+          -webkit-appearance: none;
+                  appearance: none;
       }
+      [data-testid="stTextInput"] input:focus,
+      [data-testid="stTextInput"] input:active {
+          background: #ffffff !important;
+          color: #111 !important;
+          border: 2px solid #f5b400 !important;
+          box-shadow: none !important;
+          outline: none !important;
+      }
+
+      /* "Press Enter to apply" text schwarz */
+      [data-testid="stTextInput"] small,
+      [data-testid="stTextInput"] p,
+      [data-testid="stTextInputHelp"] {
+          color: #000 !important;
+      }
+
+      /* Email-Link neutral */
+      .no-link { color: inherit !important; text-decoration: none !important; pointer-events: none !important; }
       .no-link a, .no-link a:link, .no-link a:visited {
-          color: inherit !important;
-          text-decoration: none !important;
-          pointer-events: none !important;
+          color: inherit !important; text-decoration: none !important; pointer-events: none !important;
       }
     </style>
     """, unsafe_allow_html=True)
@@ -107,55 +154,56 @@ def show_consent_form():
     st.markdown('<div class="consent-enter">', unsafe_allow_html=True)
     st.title("🧾 Consent to the Processing of Image and Personal Input for AI-Based Caricature Generation")
 
-    # --- main consent text ---
+    # main consent text
     st.markdown('<div class="consent-box">', unsafe_allow_html=True)
     st.markdown(CONSENT_TEXT_MD, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # --- name field below text, label hidden ---
+    # text input
     name = st.text_input(
         "Your name",
         placeholder="Enter your name",
-        label_visibility="collapsed"
+        label_visibility="collapsed",
+        help="Press Enter to apply"
     )
 
+    # buttons
     col1, col2 = st.columns(2)
     with col1:
-        accept = st.button("Accept ✅", use_container_width=True)
+        accept = st.button("Accept ✅", use_container_width=True, type="primary")
     with col2:
         decline = st.button("Decline ❌", use_container_width=True)
 
+    # logic
     if accept:
         if not name.strip():
             st.warning("Please enter your name to continue.")
             st.stop()
 
-        decision_time = _now_iso()
         payload = {
             "session_id": st.session_state.session_id,
             "session_start": st.session_state.session_start,
             "name": name.strip(),
             "decision": "accepted",
-            "decision_timestamp": decision_time,
+            "decision_timestamp": _now_iso(),
         }
         _save_consent_to_db(payload)
 
         st.session_state.consent_accepted = True
         st.session_state.route = "camera"
-        st.rerun()
+        _rerun()  # guaranteed rerun
 
     if decline:
-        decision_time = _now_iso()
         payload = {
             "session_id": st.session_state.session_id,
             "session_start": st.session_state.session_start,
             "name": name.strip(),
             "decision": "declined",
-            "decision_timestamp": decision_time,
+            "decision_timestamp": _now_iso(),
         }
         _save_consent_to_db(payload)
-
         st.error("You declined consent. The app will not proceed.")
         st.stop()
 
+    st.markdown('</div>', unsafe_allow_html=True)
     st.stop()

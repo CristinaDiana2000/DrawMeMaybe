@@ -30,25 +30,25 @@ def go(route: str):
     _set_qp(route=route)
     st.rerun()
 
-# ---------- stage flags (optional) ----------
+# ---------- optional flags ----------
 st.session_state.setdefault("consent_accepted", False)
 st.session_state.setdefault("photo_captured", False)
 
-# ---------- read & normalize URL ----------
+# ---------- routing ----------
 qp = _read_qp()
-route_from_url = qp.get("route")
-touched_flag = qp.get("touched") == "1"
+route_from_url = qp.get("route")  # kann None sein
 
+# 1) Cold start: Session-Route initialisieren (URL-Route falls vorhanden, sonst screensaver)
+if "route" not in st.session_state:
+    st.session_state.route = route_from_url or "screensaver"
 
+# 2) Falls URL-Route ungleich Session-Route ist, bevorzugen wir die Session
+#    (z.B. nach Klick auf Accept hat die Seite st.session_state.route="camera" gesetzt)
+elif route_from_url != st.session_state.route:
+    # URL an die Session anpassen, damit Back/Forward sauber funktionieren
+    _set_qp(route=st.session_state.route)
 
-# If neither ?route nor ?touched is present, clear any stale route so we show screensaver
-if route_from_url:                           # explicit deep-link wins
-    route = route_from_url
-elif "route" in st.session_state:            # in-app nav
-    route = st.session_state.route
-else:                                        # cold start -> screensaver
-    route = "screensaver"
-    st.session_state.route = route
+route = st.session_state.route
 
 # ---------- render ----------
 if route == "screensaver":

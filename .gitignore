@@ -12,3 +12,5 @@ pycache/
 __pycache__/
 db.json
 LoRAs/
+.vscode/
+__pycache__/

@@ -1,37 +1,42 @@
-# ai_image/models/vision_llm.py
-
-"""
-Wrapper around the vision-language model used by the caricature agent.
-
-Right now this is a dummy implementation that does NOT call a real model.
-Later, we will replace the core logic with a call to BakLLaVA / LLaVA / Qwen-VL.
-"""
-
-from dataclasses import dataclass
+from dataclasses import dataclass #for VisionLLMResult
 from typing import Optional
-from PIL import Image
+from PIL import Image #for image input
+import torch #for tensors and sending things to CPU/GPU
+from transformers import AutoProcessor #handles image+text preprocessing
+from transformers import AutoModelForCausalLM #generic class for models that generate text
 
 
-@dataclass
+@dataclass          # container obejct for the model's output
 class VisionLLMResult:
-    """Structured result from the vision model."""
-    description: str   # A descriptive text that mixes face + interest
+    description: str
 
 
 class VisionLLM:
     """
-    High-level interface for our vision-language model.
-
-    Usage:
-        vllm = VisionLLM()
-        result = vllm.describe_image_with_interest(image, "I like bouldering")
+    Wrapper for a small vision-language model.
     """
 
-    def __init__(self, model_name: str = "dummy", device: str = "cpu"):
-        self.model_name = model_name
+    def __init__(
+        self,
+        model_name: str = "microsoft/Florence-2-base-ft", #huggingFace model name
+        device: str = "cpu", # "cpu" or "cuda" depending on the hardware
+    ):
+    
         self.device = device
-        # TODO: Later, load the actual model & processor/tokenizer here.
-        # For now this is just a stub.
+        self.model_name = model_name
+
+        print(f"[VisionLLM] Loading model '{model_name}' on {device}...")
+
+        # NOTE: Florence-2 is a vision-text model that can be used as a VLM.
+        # If we change the model, we may need to adjust how prompts are formed.
+
+        self.processor = AutoProcessor.from_pretrained(model_name) #downloads pprocessor configs e.g image preprocessor
+        self.model = AutoModelForCausalLM.from_pretrained(          #downloads model weights and architecture
+            model_name,
+            torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+        ).to(device) #sends model to CPU/GPU
+
+        self.model.eval() #sets model to eval mode (disables dropout, etc)
 
     def describe_image_with_interest(
         self,
@@ -40,22 +45,42 @@ class VisionLLM:
         language: str = "en",
     ) -> VisionLLMResult:
         """
-        Take a face image + user text and produce a descriptive text.
+        Take a face image + user text and produce a descriptive text suitable
+        as a caricature prompt.
 
-        For now, this is just a handcrafted dummy response so we can
-        develop the rest of the pipeline.
+        This sends a prompt + image to the vision-language model and returns
+        the generated description.
         """
-        base_desc = (
-            "A friendly caricature of a person based on the provided face photo. "
-            "Exaggerate expressive facial features in a kind, playful way."
+
+        # VERY IMPORTANT: Each VLM has its own prompt style.
+        # For a general VLM, we use a simple instruction-style prompt.
+        base_prompt = (
+            "You are a helpful vision-language assistant. "
+            "Look at the photo and describe the person in a friendly, "
+            "caricature-oriented way. Focus on expressive but kind exaggerations "
+            "of face and pose."
         )
 
         if user_text:
-            interest_part = f" Include elements related to: {user_text!r}."
-        else:
-            interest_part = " No specific hobby given; keep it generic and fun."
+            base_prompt += f" Incorporate elements related to this hobby or interest: {user_text!r}."
 
-        # You could make this slightly dynamic so it's less boring:
-        description = base_desc + interest_part
+        # Build processor inputs
+        inputs = self.processor(
+            text=base_prompt,
+            images=image,
+            return_tensors="pt",
+        ).to(self.device)
 
-        return VisionLLMResult(description=description)
+        # Generate output text
+        with torch.no_grad():
+            output = self.model.generate(
+                **inputs,
+                max_new_tokens=200,
+                do_sample=True, #enable sampling to get more diverse outputs
+                temperature=0.7, #controls randomness of sampling
+            )
+
+        # Decode the first sequence
+        text = self.processor.batch_decode(output, skip_special_tokens=True)[0] 
+
+        return VisionLLMResult(description=text)

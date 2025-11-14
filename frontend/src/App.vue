@@ -9,9 +9,6 @@ import { RouterLink, RouterView } from 'vue-router'
   </div>
 </template>
 
-<script setup>
-// nothing yet
-</script>
 
 <style>
 #app-root {

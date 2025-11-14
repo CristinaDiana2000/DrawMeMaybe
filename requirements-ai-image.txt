@@ -1,0 +1,7 @@
+Pillow
+# Later I will add:
+# torch
+# transformers
+# accelerate
+# sentencepiece (if needed by the chosen model)
+# and the specific model library if it has one

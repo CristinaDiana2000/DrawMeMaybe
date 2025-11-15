@@ -1,64 +1,78 @@
 <template>
   <div class="app-screen">
-    <div class="app-card chat-card">
-      <!-- Header -->
+    <div class="app-card">
+
+      <!-- Title -->
       <h1 class="app-card-title mb-1">
         <i class="bi bi-chat-square-text me-2"></i>
         Tell us something about you
       </h1>
       <p class="app-card-subtitle">
-        Share a hobby, interest, or fun fact. We'll use it as inspiration for your caricature.
+        Write a short hobby, interest, or fun fact. We'll use it to inspire your caricature.
       </p>
 
-      <!-- Chat area -->
-      <div class="chat-scroll mb-3">
-        <div
-          v-for="(msg, idx) in messages"
-          :key="idx"
-          class="chat-row"
-          :class="msg.role === 'assistant' ? 'chat-left' : 'chat-right'"
-        >
-          <!-- Assistant left -->
-          <template v-if="msg.role === 'assistant'">
-            <img :src="AI_ICON" alt="Assistant" class="avatar me-2" />
-            <div class="bubble bubble-assistant">
-              <span v-html="msg.content"></span>
-            </div>
-          </template>
+      <!-- User input -->
+      <div class="mb-3">
+        <label for="user-input" class="form-label">Your input</label>
+        <textarea
+          id="user-input"
+          v-model="userText"
+          class="form-control"
+          rows="3"
+          placeholder="Example: I love painting tiny robots in my free time."
+        ></textarea>
 
-          <!-- User right -->
-          <template v-else>
-            <div class="bubble bubble-user">
-              <span v-html="msg.content"></span>
-            </div>
-            <img :src="USER_ICON" alt="You" class="avatar ms-2" />
-          </template>
+        <div v-if="errorMessage" class="text-danger mt-1">
+          {{ errorMessage }}
         </div>
       </div>
 
-      <!-- Input -->
-      <div class="chat-input-row">
-        <input
-          v-model="userText"
-          type="text"
-          class="form-control chat-input me-2"
-          placeholder="Tell me about your hobbies or interests…"
-          @keyup.enter="onSend"
-        />
+      <!-- Generate button -->
+      <div class="mb-3 d-flex justify-content-end">
         <button
           type="button"
           class="btn btn-dark btn-pill"
-          @click="onSend"
+          @click="onGenerate"
           :disabled="isThinking"
         >
-          <i class="bi bi-send me-1"></i>
-          Send
+          <i class="bi bi-magic me-1"></i>
+          {{ isThinking ? "Generating..." : "Generate text" }}
         </button>
       </div>
 
-      <div v-if="errorMessage" class="text-danger mt-1">
-        {{ errorMessage }}
+      <!-- Generated response -->
+      <div v-if="responseText" class="mb-3">
+        <h2 class="h6 mb-2">
+          <i class="bi bi-stars me-1"></i>
+          Proposed caption / description
+        </h2>
+
+        <div class="p-3 rounded-3 border bg-light">
+          {{ responseText }}
+        </div>
       </div>
+
+      <!-- Accept / Try again -->
+      <div v-if="responseText" class="d-flex justify-content-end gap-2">
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-pill"
+          @click="onTryAgain"
+        >
+          <i class="bi bi-arrow-repeat me-1"></i>
+          Try again
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-success btn-pill"
+          @click="onAccept"
+        >
+          <i class="bi bi-check-circle me-1"></i>
+          This fits me
+        </button>
+      </div>
+
     </div>
   </div>
 </template>
@@ -69,21 +83,8 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-// you can later replace these URLs with local assets and import them
-const USER_ICON =
-  "https://cdn-icons-png.flaticon.com/512/1077/1077012.png";
-const AI_ICON =
-  "https://raw.githubusercontent.com/Cristina2000-hub/DrawMeMaybe/frontend/frontend/uploads/Designer%20(1).png";
-
-const messages = ref([
-  {
-    role: "assistant",
-    content:
-      "Hi! I'm here to help with your caricature. Tell me one hobby, interest, or fun fact about yourself.",
-  },
-]);
-
 const userText = ref("");
+const responseText = ref("");
 const errorMessage = ref("");
 const isThinking = ref(false);
 
@@ -96,129 +97,34 @@ function validate() {
   return true;
 }
 
-function buildAssistantResponse(raw) {
-  const keyword = raw.toLowerCase().trim();
+async function onGenerate() {
+  if (!validate()) return;
 
-  const tagMap = {
-    art: "art lover",
-    music: "music fan",
-    gardening: "plant whisperer",
-    gaming: "gaming pro",
-    coding: "code wizard",
-    reading: "book enthusiast",
-    travel: "world explorer",
-    sports: "sports fan",
-    cooking: "kitchen creative",
-  };
-
-  const tag = tagMap[keyword] || "original character";
-
-  return (
-    `Got it! You mentioned <strong>${keyword}</strong> — that sounds like great material ` +
-    `for a caricature. We'll treat you as our next <strong>${tag}</strong>.`
-  );
-}
-
-async function onSend() {
-  if (!validate() || isThinking.value) return;
+  isThinking.value = true;
+  responseText.value = "";
 
   const text = userText.value.trim();
 
-  // push user message
-  messages.value.push({
-    role: "user",
-    content: `<strong>${text}</strong>`,
-  });
+  // TODO: Replace with backend AI request
+  await new Promise((resolve) => setTimeout(resolve, 600));
 
-  userText.value = "";
-  isThinking.value = true;
-
-  // fake small delay (later: call backend instead)
-  await new Promise((resolve) => setTimeout(resolve, 500));
-
-  const reply = buildAssistantResponse(text);
-
-  messages.value.push({
-    role: "assistant",
-    content: reply,
-  });
+  responseText.value =
+    `A person who ${text.toLowerCase()} — the perfect inspiration ` +
+    `for a creative and slightly chaotic caricature.`;
 
   isThinking.value = false;
+}
 
-  // TODO later:
-  // - send final hobby text to backend
-  // - potentially move to next step automatically
-  // For now we stay on this screen; user can just say "Ok" and you can
-  // navigate them away from here (e.g. router.push("/")) somewhere else if needed.
+function onTryAgain() {
+  responseText.value = "";
+}
+
+function onAccept() {
+  // TODO: send final approved text to backend
+  router.push("/");  // Go back to screensaver for now
 }
 </script>
 
 <style scoped>
-.chat-card {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Scrollable chat area */
-.chat-scroll {
-  flex: 1;
-  max-height: 50vh;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-}
-
-/* One row per message */
-.chat-row {
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 0.5rem;
-}
-
-/* Left/right alignment */
-.chat-left {
-  justify-content: flex-start;
-}
-
-.chat-right {
-  justify-content: flex-end;
-}
-
-/* Bubbles */
-.bubble {
-  max-width: 70%;
-  padding: 0.6rem 0.9rem;
-  border-radius: 18px;
-  font-size: 0.95rem;
-}
-
-.bubble-assistant {
-  background: #f3f4f6;
-  color: #111827;
-  border-top-left-radius: 4px;
-}
-
-.bubble-user {
-  background: #111827;
-  color: #f9fafb;
-  border-top-right-radius: 4px;
-}
-
-/* Avatars */
-.avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* Input row */
-.chat-input-row {
-  display: flex;
-  align-items: center;
-  margin-top: 0.75rem;
-}
-
-.chat-input {
-  border-radius: 999px;
-}
+/* ChatView-specific tweaks (optional) */
 </style>

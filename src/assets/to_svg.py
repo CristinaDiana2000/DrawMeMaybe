@@ -17,7 +17,7 @@ def contours_to_svg(contours, filename="out.svg", width=None, height=None):
         
 
 
-img = cv2.imread('C:\\Users\\muham\\repos\\DrawMeMaybe\\src\\assets\\BCO.png', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('C:\\Users\\muham\\repos\\DrawMeMaybe\\src\\assets\\ChatGPT Image 16. Nov. 2025, 15_35_26.png', cv2.IMREAD_GRAYSCALE)
 
 #pixel in liste umwandeln
 pixels = img.reshape((-1, 1)).astype(np.float32)
@@ -55,8 +55,8 @@ canvas = np.ones_like(edges) * 255  # weißer Hintergrund
 cv2.drawContours(canvas, top_contours, -1, (0,0,0), 1)  # schwarze Linien, dicke=1
 
 cv2.imshow("Top 100 Contours", cv2.resize(canvas,None, fx=0.8, fy=0.8))
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+
+
 
 
 cv2.imshow("Original", cv2.resize(img,None, fx=0.4, fy=0.4))

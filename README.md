@@ -12,7 +12,6 @@ A camera takes a photo of a person, the person provides their hobbies or interes
   
 ### **2. Processing**
 
-- 🧠 **Face Analysis**: Detect facial landmarks, shapes, and features
 - 💬 **Interest Analysis**: Analyze text input to select fitting visual elements
 - 🎨 **Cartoonization**: Generate a cartoon-style image using AI
 

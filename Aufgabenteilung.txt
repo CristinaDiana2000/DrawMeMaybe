@@ -1,0 +1,9 @@
+In dieser Datei wird die Aufgabenteilung festgehalten:
+Muhammet Keser
+
+Stephan Reckziegel
+- Group2 reparieren
+- Workspace für UR5e erstellen
+- Webser einrichten
+
+Cristina Tutunariu

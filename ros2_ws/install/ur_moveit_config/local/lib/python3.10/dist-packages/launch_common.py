@@ -1,0 +1,1 @@
+/home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_moveit_config/ur_moveit_config/launch_common.py

@@ -1,0 +1,183 @@
+[0.004s] Invoking command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers': AMENT_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers -DCMAKE_INSTALL_PREFIX=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers
+[0.008s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.057s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.059s] -- Found angles: 1.15.0 (/opt/ros/humble/share/angles/cmake)
+[0.060s] -- Found controller_interface: 2.52.0 (/opt/ros/humble/share/controller_interface/cmake)
+[0.069s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.070s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.072s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.075s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.079s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.140s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.140s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.147s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.151s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.157s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.161s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.165s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.183s] -- Found joint_trajectory_controller: 2.50.1 (/opt/ros/humble/share/joint_trajectory_controller/cmake)
+[0.200s] -- Found std_srvs: 4.9.0 (/opt/ros/humble/share/std_srvs/cmake)
+[0.203s] -- Found tf2_geometry_msgs: 0.25.16 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[0.204s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[0.205s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.223s] -- Found ur_dashboard_msgs: 2.10.0 (/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/share/ur_dashboard_msgs/cmake)
+[0.229s] -- Found ur_msgs: 2.3.0 (/opt/ros/humble/share/ur_msgs/cmake)
+[0.243s] -- Found ament_cmake_gmock: 1.3.12 (/opt/ros/humble/share/ament_cmake_gmock/cmake)
+[0.244s] -- Found controller_manager: 2.52.0 (/opt/ros/humble/share/controller_manager/cmake)
+[0.251s] -- Found ros2_control_test_assets: 2.52.0 (/opt/ros/humble/share/ros2_control_test_assets/cmake)
+[0.256s] -- Found gmock sources under '/opt/ros/humble/src/gmock_vendor': C++ tests using 'Google Mock' will be built
+[0.258s] -- Found ament_cmake_gtest: 1.3.12 (/opt/ros/humble/share/ament_cmake_gtest/cmake)
+[0.259s] -- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[0.291s] -- Configuring done
+[0.305s] -- Generating done
+[0.309s] -- Build files have been written to: /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers
+[0.315s] Invoked command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers' returned '0': AMENT_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers -DCMAKE_INSTALL_PREFIX=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers
+[0.316s] Invoking command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers': AMENT_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers -- -j24 -l24
+[0.335s] [  2%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers/src/tool_contact_controller_parameters.yaml `[0m
+[0.335s] [  5%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers/src/speed_scaling_state_broadcaster_parameters.yaml `[0m
+[0.336s] [  8%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers/src/force_mode_controller_parameters.yaml `[0m
+[0.336s] [ 11%] [32mBuilding CXX object gmock/CMakeFiles/gmock.dir/src/gmock-all.cc.o[0m
+[0.336s] [ 17%] [32mBuilding CXX object gmock/CMakeFiles/gmock.dir/opt/ros/humble/src/gtest_vendor/src/gtest-all.cc.o[0m
+[0.336s] [ 17%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers/src/passthrough_trajectory_controller_parameters.yaml `[0m
+[0.336s] [ 20%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers/src/gpio_controller_parameters.yaml `[0m
+[0.336s] [ 23%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers/src/scaled_joint_trajectory_controller_parameters.yaml `[0m
+[0.336s] [ 29%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers/src/freedrive_mode_controller_parameters.yaml `[0m
+[0.336s] [ 32%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers/src/ur_configuration_controller_parameters.yaml `[0m
+[0.336s] [ 32%] [32mBuilding CXX object gmock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o[0m
+[0.398s] [ 35%] [34m[1mCreating deprecated header file /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/ur_configuration_controller_parameters.hpp[0m
+[0.400s] [ 38%] [34m[1mCreating deprecated header file /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/scaled_joint_trajectory_controller_parameters.hpp[0m
+[0.404s] [ 41%] [34m[1mCreating deprecated header file /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/speed_scaling_state_broadcaster_parameters.hpp[0m
+[0.406s] [ 47%] [34m[1mCreating deprecated header file /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/force_mode_controller_parameters.hpp[0m
+[0.406s] [ 47%] [34m[1mCreating deprecated header file /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/gpio_controller_parameters.hpp[0m
+[0.406s] [ 47%] Built target ur_configuration_controller_parameters
+[0.406s] [ 50%] [34m[1mCreating deprecated header file /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/tool_contact_controller_parameters.hpp[0m
+[0.407s] [ 50%] Built target scaled_joint_trajectory_controller_parameters
+[0.410s] [ 50%] Built target speed_scaling_state_broadcaster_parameters
+[0.412s] [ 50%] Built target force_mode_controller_parameters
+[0.413s] [ 52%] [34m[1mCreating deprecated header file /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/freedrive_mode_controller_parameters.hpp[0m
+[0.413s] [ 52%] Built target tool_contact_controller_parameters
+[0.413s] [ 52%] Built target gpio_controller_parameters
+[0.419s] [ 52%] Built target freedrive_mode_controller_parameters
+[0.422s] [ 55%] [34m[1mCreating deprecated header file /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/include/passthrough_trajectory_controller_parameters.hpp[0m
+[0.428s] [ 55%] Built target passthrough_trajectory_controller_parameters
+[0.436s] [ 61%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/force_mode_controller.cpp.o[0m
+[0.436s] [ 61%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/tool_contact_controller.cpp.o[0m
+[0.436s] [ 64%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/scaled_joint_trajectory_controller.cpp.o[0m
+[0.436s] [ 67%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/speed_scaling_state_broadcaster.cpp.o[0m
+[0.436s] [ 70%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/passthrough_trajectory_controller.cpp.o[0m
+[0.437s] [ 79%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/freedrive_mode_controller.cpp.o[0m
+[0.437s] [ 79%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/ur_configuration_controller.cpp.o[0m
+[0.437s] [ 79%] [32mBuilding CXX object CMakeFiles/ur_controllers.dir/src/gpio_controller.cpp.o[0m
+[0.812s] [ 82%] [32m[1mLinking CXX static library libgmock_main.a[0m
+[0.828s] [ 82%] Built target gmock_main
+[1.691s] [ 85%] [32m[1mLinking CXX static library libgmock.a[0m
+[1.717s] [ 85%] Built target gmock
+[4.646s] [ 88%] [32m[1mLinking CXX shared library libur_controllers.so[0m
+[5.188s] [ 88%] Built target ur_controllers
+[5.196s] [ 94%] [32mBuilding CXX object CMakeFiles/test_load_freedrive_mode_controller.dir/test/test_load_freedrive_mode_controller.cpp.o[0m
+[5.197s] [ 94%] [32mBuilding CXX object CMakeFiles/test_load_force_mode_controller.dir/test/test_load_force_mode_controller.cpp.o[0m
+[7.337s] [ 97%] [32m[1mLinking CXX executable test_load_force_mode_controller[0m
+[7.341s] [100%] [32m[1mLinking CXX executable test_load_freedrive_mode_controller[0m
+[7.458s] [100%] Built target test_load_force_mode_controller
+[7.459s] [100%] Built target test_load_freedrive_mode_controller
+[7.463s] Invoked command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers' returned '0': AMENT_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers -- -j24 -l24
+[7.464s] Invoking command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers': AMENT_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers
+[7.467s] -- Install configuration: ""
+[7.467s] -- Execute custom install script
+[7.467s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[7.470s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[7.473s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[7.475s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[7.478s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[7.481s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[7.483s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[7.486s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[7.489s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[7.489s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[7.489s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[7.489s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[7.489s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[7.490s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/force_mode_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/gpio_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller_parameters.hpp
+[7.491s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller_parameters.hpp
+[7.491s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers//controller_plugins.xml
+[7.494s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/lib/libur_controllers.so
+[7.497s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/force_mode_controller.hpp
+[7.500s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/freedrive_mode_controller.hpp
+[7.503s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/gpio_controller.hpp
+[7.506s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/passthrough_trajectory_controller.hpp
+[7.509s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/scaled_joint_trajectory_controller.hpp
+[7.512s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/speed_scaling_state_broadcaster.hpp
+[7.514s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/tool_contact_controller.hpp
+[7.517s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/include/ur_controllers/ur_configuration_controller.hpp
+[7.520s] -- Up-to-date symlink: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/controller_plugins.xml
+[7.520s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/environment/library_path.sh
+[7.523s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/environment/library_path.dsv
+[7.526s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ament_index/resource_index/package_run_dependencies/ur_controllers
+[7.528s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ament_index/resource_index/parent_prefix_path/ur_controllers
+[7.531s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/environment/ament_prefix_path.sh
+[7.534s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/environment/ament_prefix_path.dsv
+[7.536s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/environment/path.sh
+[7.539s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/environment/path.dsv
+[7.542s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/local_setup.bash
+[7.544s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/local_setup.sh
+[7.547s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/local_setup.zsh
+[7.550s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/local_setup.dsv
+[7.552s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/package.dsv
+[7.555s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ament_index/resource_index/packages/ur_controllers
+[7.558s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ament_index/resource_index/controller_interface__pluginlib__plugin/ur_controllers
+[7.561s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/cmake/ament_cmake_export_dependencies-extras.cmake
+[7.564s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/cmake/ament_cmake_export_include_directories-extras.cmake
+[7.567s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/cmake/ament_cmake_export_libraries-extras.cmake
+[7.569s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/cmake/ur_controllersConfig.cmake
+[7.572s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/cmake/ur_controllersConfig-version.cmake
+[7.574s] -- Symlinking: /home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers/share/ur_controllers/package.xml
+[7.579s] Invoked command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers' returned '0': AMENT_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers

@@ -1,0 +1,1 @@
+/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_dashboard_msgs/ament_cmake_environment_hooks/pythonpath.sh

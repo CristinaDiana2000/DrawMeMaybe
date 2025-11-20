@@ -1,0 +1,37 @@
+[0.003s] Invoking command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers': AMENT_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers
+[0.024s] -- The C compiler identification is GNU 11.4.0
+[0.046s] -- The CXX compiler identification is GNU 11.4.0
+[0.048s] -- Detecting C compiler ABI info
+[0.073s] -- Detecting C compiler ABI info - done
+[0.076s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.076s] -- Detecting C compile features
+[0.076s] -- Detecting C compile features - done
+[0.078s] -- Detecting CXX compiler ABI info
+[0.106s] -- Detecting CXX compiler ABI info - done
+[0.110s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.110s] -- Detecting CXX compile features
+[0.110s] -- Detecting CXX compile features - done
+[0.111s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.172s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.198s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.209s] -- Found angles: 1.15.0 (/opt/ros/humble/share/angles/cmake)
+[0.213s] [31mCMake Error at CMakeLists.txt:11 (find_package):
+[0.213s]   By not providing "Findcontroller_interface.cmake" in CMAKE_MODULE_PATH this
+[0.213s]   project has asked CMake to find a package configuration file provided by
+[0.213s]   "controller_interface", but CMake did not find one.
+[0.213s] 
+[0.213s]   Could not find a package configuration file provided by
+[0.213s]   "controller_interface" with any of the following names:
+[0.213s] 
+[0.213s]     controller_interfaceConfig.cmake
+[0.213s]     controller_interface-config.cmake
+[0.213s] 
+[0.213s]   Add the installation prefix of "controller_interface" to CMAKE_PREFIX_PATH
+[0.213s]   or set "controller_interface_DIR" to a directory containing one of the
+[0.213s]   above files.  If "controller_interface" provides a separate development
+[0.213s]   package or SDK, be sure it has been installed.
+[0.213s] 
+[0.213s] [0m
+[0.213s] -- Configuring incomplete, errors occurred!
+[0.213s] See also "/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers/CMakeFiles/CMakeOutput.log".
+[0.215s] Invoked command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_controllers' returned '1': AMENT_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_controllers -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers

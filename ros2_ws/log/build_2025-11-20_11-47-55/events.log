@@ -1,0 +1,90 @@
+[0.000000] (-) TimerEvent: {}
+[0.000363] (ur_dashboard_msgs) JobQueued: {'identifier': 'ur_dashboard_msgs', 'dependencies': OrderedDict()}
+[0.000385] (ur_description) JobQueued: {'identifier': 'ur_description', 'dependencies': OrderedDict()}
+[0.000396] (ur_controllers) JobQueued: {'identifier': 'ur_controllers', 'dependencies': OrderedDict([('ur_dashboard_msgs', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs')])}
+[0.000408] (ur_moveit_config) JobQueued: {'identifier': 'ur_moveit_config', 'dependencies': OrderedDict([('ur_description', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_description')])}
+[0.000417] (ur_bringup) JobQueued: {'identifier': 'ur_bringup', 'dependencies': OrderedDict([('ur_dashboard_msgs', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs'), ('ur_description', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_description'), ('ur_controllers', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers')])}
+[0.000428] (ur_robot_driver) JobQueued: {'identifier': 'ur_robot_driver', 'dependencies': OrderedDict([('ur_dashboard_msgs', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs'), ('ur_description', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_description'), ('ur_controllers', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers')])}
+[0.000438] (ur_calibration) JobQueued: {'identifier': 'ur_calibration', 'dependencies': OrderedDict([('ur_dashboard_msgs', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs'), ('ur_description', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_description'), ('ur_controllers', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers'), ('ur_robot_driver', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_robot_driver')])}
+[0.000448] (ur) JobQueued: {'identifier': 'ur', 'dependencies': OrderedDict([('ur_dashboard_msgs', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs'), ('ur_description', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_description'), ('ur_controllers', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_controllers'), ('ur_moveit_config', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_moveit_config'), ('ur_robot_driver', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_robot_driver'), ('ur_calibration', '/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_calibration')])}
+[0.000462] (ur_dashboard_msgs) JobStarted: {'identifier': 'ur_dashboard_msgs'}
+[0.003828] (ur_description) JobStarted: {'identifier': 'ur_description'}
+[0.004704] (ur_dashboard_msgs) JobProgress: {'identifier': 'ur_dashboard_msgs', 'progress': 'cmake'}
+[0.004873] (ur_dashboard_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_ros2_driver/ur_dashboard_msgs', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_dashboard_msgs'], 'cwd': '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_dashboard_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'rosrunner'), ('LC_TIME', 'de_DE.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('HOME', '/home/rosrunner'), ('OLDPWD', '/home/rosrunner/DrawMeMaybe/ros2_ws/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'de_DE.UTF-8'), ('SYSTEMD_EXEC_PID', '2252'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/rosrunner/DrawMeMaybe/ros2_ws/install'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'rosrunner'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'rosrunner'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('WINDOWPATH', '2'), ('PATH', '/home/rosrunner/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/rosrunner-MS-7D75:@/tmp/.ICE-unix/2225,unix/rosrunner-MS-7D75:/tmp/.ICE-unix/2225'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'de_DE.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9359d558_4eaf_4d0b_937b_62f2448350bd'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'de_DE.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.93'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('SHELL', '/bin/bash'), ('LC_NAME', 'de_DE.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'de_DE.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'de_DE.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_dashboard_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('LC_NUMERIC', 'de_DE.UTF-8'), ('LC_PAPER', 'de_DE.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.006875] (ur_description) JobProgress: {'identifier': 'ur_description', 'progress': 'cmake'}
+[0.007014] (ur_description) Command: {'cmd': ['/usr/bin/cmake', '/home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_description', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_description'], 'cwd': '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_description', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'rosrunner'), ('LC_TIME', 'de_DE.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('HOME', '/home/rosrunner'), ('OLDPWD', '/home/rosrunner/DrawMeMaybe/ros2_ws/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'de_DE.UTF-8'), ('SYSTEMD_EXEC_PID', '2252'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/rosrunner/DrawMeMaybe/ros2_ws/install'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'rosrunner'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'rosrunner'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('WINDOWPATH', '2'), ('PATH', '/home/rosrunner/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/rosrunner-MS-7D75:@/tmp/.ICE-unix/2225,unix/rosrunner-MS-7D75:/tmp/.ICE-unix/2225'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'de_DE.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9359d558_4eaf_4d0b_937b_62f2448350bd'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'de_DE.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.93'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('SHELL', '/bin/bash'), ('LC_NAME', 'de_DE.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'de_DE.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'de_DE.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_description'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('LC_NUMERIC', 'de_DE.UTF-8'), ('LC_PAPER', 'de_DE.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.071459] (ur_dashboard_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.071587] (ur_description) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.099876] (-) TimerEvent: {}
+[0.112155] (ur_description) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.112414] (ur_dashboard_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.117017] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.117091] (ur_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.147153] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.147718] (ur_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.149992] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.150306] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.150520] (ur_description) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.150633] (ur_description) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.150668] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.150788] (ur_description) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.152343] (ur_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.152387] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.181813] (ur_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.183566] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.184887] (ur_description) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.185023] (ur_description) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.185215] (ur_description) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.186555] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.186694] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.186887] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.192119] (ur_description) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:4 (find_package):\n'}
+[0.192259] (ur_description) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.192294] (ur_description) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.192320] (ur_description) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.192346] (ur_description) StderrLine: {'line': b'\n'}
+[0.192370] (ur_description) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.192394] (ur_description) StderrLine: {'line': b'  any of the following names:\n'}
+[0.192418] (ur_description) StderrLine: {'line': b'\n'}
+[0.192440] (ur_description) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.192463] (ur_description) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.192484] (ur_description) StderrLine: {'line': b'\n'}
+[0.192505] (ur_description) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.192527] (ur_description) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.192548] (ur_description) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.192569] (ur_description) StderrLine: {'line': b'  has been installed.\n'}
+[0.192589] (ur_description) StderrLine: {'line': b'\n'}
+[0.192610] (ur_description) StderrLine: {'line': b'\x1b[0m\n'}
+[0.192631] (ur_description) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.192655] (ur_description) StdoutLine: {'line': b'See also "/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_description/CMakeFiles/CMakeOutput.log".\n'}
+[0.192678] (ur_dashboard_msgs) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:4 (find_package):\n'}
+[0.192705] (ur_dashboard_msgs) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.192727] (ur_dashboard_msgs) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.192748] (ur_dashboard_msgs) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.192769] (ur_dashboard_msgs) StderrLine: {'line': b'\n'}
+[0.192789] (ur_dashboard_msgs) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.192809] (ur_dashboard_msgs) StderrLine: {'line': b'  any of the following names:\n'}
+[0.192830] (ur_dashboard_msgs) StderrLine: {'line': b'\n'}
+[0.192850] (ur_dashboard_msgs) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.192871] (ur_dashboard_msgs) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.192891] (ur_dashboard_msgs) StderrLine: {'line': b'\n'}
+[0.192912] (ur_dashboard_msgs) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.192934] (ur_dashboard_msgs) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.192954] (ur_dashboard_msgs) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.192976] (ur_dashboard_msgs) StderrLine: {'line': b'  has been installed.\n'}
+[0.192998] (ur_dashboard_msgs) StderrLine: {'line': b'\n'}
+[0.193019] (ur_dashboard_msgs) StderrLine: {'line': b'\x1b[0m\n'}
+[0.193043] (ur_dashboard_msgs) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.193068] (ur_dashboard_msgs) StdoutLine: {'line': b'See also "/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_dashboard_msgs/CMakeFiles/CMakeOutput.log".\n'}
+[0.193790] (ur_description) CommandEnded: {'returncode': 1}
+[0.194859] (ur_dashboard_msgs) CommandEnded: {'returncode': 1}
+[0.199930] (-) TimerEvent: {}
+[0.204821] (ur_description) JobEnded: {'identifier': 'ur_description', 'rc': 1}
+[0.205119] (ur_dashboard_msgs) JobEnded: {'identifier': 'ur_dashboard_msgs', 'rc': 'SIGINT'}
+[0.215246] (ur_controllers) JobSkipped: {'identifier': 'ur_controllers'}
+[0.215259] (ur_moveit_config) JobSkipped: {'identifier': 'ur_moveit_config'}
+[0.215266] (ur_bringup) JobSkipped: {'identifier': 'ur_bringup'}
+[0.215272] (ur_robot_driver) JobSkipped: {'identifier': 'ur_robot_driver'}
+[0.215278] (ur_calibration) JobSkipped: {'identifier': 'ur_calibration'}
+[0.215284] (ur) JobSkipped: {'identifier': 'ur'}
+[0.215290] (-) EventReactorShutdown: {}

@@ -1,0 +1,18 @@
+[0mur_robot_driver: You did not request a specific build type: selecting 'RelWithDebInfo'.[0m
+[31mCMake Error at CMakeLists.txt:37 (find_package):
+  By not providing "Findur_client_library.cmake" in CMAKE_MODULE_PATH this
+  project has asked CMake to find a package configuration file provided by
+  "ur_client_library", but CMake did not find one.
+
+  Could not find a package configuration file provided by "ur_client_library"
+  with any of the following names:
+
+    ur_client_libraryConfig.cmake
+    ur_client_library-config.cmake
+
+  Add the installation prefix of "ur_client_library" to CMAKE_PREFIX_PATH or
+  set "ur_client_library_DIR" to a directory containing one of the above
+  files.  If "ur_client_library" provides a separate development package or
+  SDK, be sure it has been installed.
+
+[0m

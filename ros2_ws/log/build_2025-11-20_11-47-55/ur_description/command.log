@@ -1,0 +1,2 @@
+Invoking command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_description': /usr/bin/cmake /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_description
+Invoked command in '/home/rosrunner/DrawMeMaybe/ros2_ws/build/ur_description' returned '1': /usr/bin/cmake /home/rosrunner/DrawMeMaybe/ros2_ws/src/ur_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/rosrunner/DrawMeMaybe/ros2_ws/install/ur_description

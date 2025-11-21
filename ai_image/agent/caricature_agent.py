@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Dict, List
 from PIL import Image
 import re
+from ai_image.models.vision_blip import BlipDescriber
 
 
 @dataclass
@@ -19,12 +20,25 @@ class CaricatureConcept:
 
 
 # 1. Image → face description 
-def describe_face_stub(image: Image.Image) -> str:
-    """
-    TEMPORARY: fake face description.
-    """
-    return "a smiling person looking at the camera"
+# def describe_face_stub(image: Image.Image) -> str:
+#     """
+#     TEMPORARY: fake face description.
+#     """
+#     return "a smiling person looking at the camera"
+# Global BLIP describer instance (loaded once)
+_blip_describer: BlipDescriber | None = None
 
+def describe_face(image: Image.Image) -> str:
+    """
+    Use BLIP to generate a natural language description of the face image.
+    """
+    global _blip_describer
+    if _blip_describer is None:
+        # initialize lazily on first use
+        _blip_describer = BlipDescriber(device="cpu")
+
+    desc = _blip_describer.describe(image)
+    return desc.text
 
 # 2. User text → hobby keywords
 def extract_hobbies(user_text: str) -> List[str]:
@@ -104,7 +118,7 @@ def run_caricature_agent(image: Image.Image, user_text: str) -> Dict[str, str]:
     Returns:
         dict with keys: title, caricature_prompt, caption
     """
-    face_desc = describe_face_stub(image)            # (1) TEMP: stub
+    face_desc = describe_face(image)            # (1) TEMP: stub
     hobbies = extract_hobbies(user_text)             # (2)
     concept = build_caricature_concept(face_desc, hobbies)  # (3)
     return concept.to_dict()

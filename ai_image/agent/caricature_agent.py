@@ -11,7 +11,7 @@ High-level job:
 """
 
 from dataclasses import dataclass
-from typing import Dict
+from typing import Dict, List
 from PIL import Image
 
 from ai_image.config import VISION_LLM_MODEL_NAME, DEVICE

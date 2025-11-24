@@ -16,3 +16,6 @@ LoRAs/
 __pycache__/
 venv/
 get-pip.py 
+ve.venv/
+venv/
+__pycache__/

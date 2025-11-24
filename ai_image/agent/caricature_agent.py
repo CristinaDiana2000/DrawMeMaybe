@@ -1,9 +1,16 @@
+# ai_image/agent/caricature_agent.py
+
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict, List, Optional
 from PIL import Image
 import re
+
 from ai_image.models.vision_blip import BlipDescriber
 
+
+# ------------------------------
+# Data structure for agent output
+# ------------------------------
 
 @dataclass
 class CaricatureConcept:
@@ -19,106 +26,174 @@ class CaricatureConcept:
         }
 
 
-# 1. Image → face description 
-# def describe_face_stub(image: Image.Image) -> str:
-#     """
-#     TEMPORARY: fake face description.
-#     """
-#     return "a smiling person looking at the camera"
-# Global BLIP describer instance (loaded once)
-_blip_describer: BlipDescriber | None = None
+# ------------------------------
+# BLIP loader + fallback
+# ------------------------------
+
+_blip_instance: Optional[BlipDescriber] = None
+
+
+def _get_blip() -> BlipDescriber:
+    """
+    Lazy load a single BLIP instance so the model is loaded once.
+    """
+    global _blip_instance
+    if _blip_instance is None:
+        _blip_instance = BlipDescriber(device="cpu")
+    return _blip_instance
+
 
 def describe_face(image: Image.Image) -> str:
     """
-    Use BLIP to generate a natural language description of the face image.
+    Describe the face using BLIP.
+
+    If BLIP fails for any reason (model missing, corrupted download, etc.),
+    fall back to a simple generic description so the agent never crashes.
     """
-    global _blip_describer
-    if _blip_describer is None:
-        # initialize lazily on first use
-        _blip_describer = BlipDescriber(device="cpu")
+    try:
+        blip = _get_blip()
+        desc = blip.describe(image)
 
-    desc = _blip_describer.describe(image)
-    return desc.text
+        out = (desc.text or "").strip()
+        if not out:
+            return "a person looking at the camera"
 
-# 2. User text → hobby keywords
+        return out
+
+    except Exception as e:
+        print("⚠️  Warning: BLIP describe_face failed — using fallback:", e)
+        return "a person looking at the camera"
+
+
+# ------------------------------
+# English hobby extraction
+# ------------------------------
+
+ENGLISH_STOPWORDS = {
+    "i", "my", "me", "and", "or", "also", "very", "really", "quite",
+    "love", "like", "enjoy", "am", "is", "are", "to", "a", "the"
+}
+
+
 def extract_hobbies(user_text: str) -> List[str]:
     """
-    Very simple keyword extraction:
-    - lowercases
-    - splits on commas, 'and', and newlines
-    - strips empty pieces
+    Extracts hobby-related phrases from English text.
+
+    Examples:
+      "I like bouldering and baking cakes"
+          → ["bouldering", "baking cakes"]
+
+      "climbing, drawing, cooking"
+          → ["climbing", "drawing", "cooking"]
     """
+
     if not user_text:
         return []
 
-    raw = user_text.lower()
-    # Split by comma, newline, or the word "and"
-    tokens = re.split(r"[,\n]|\\band\\b", raw)
-    hobbies: List[str] = []
+    text = user_text.lower().strip()
 
-    for tok in tokens:
-        tok = tok.strip()
-        if len(tok) > 2:  # ignore tiny words like 'an', 'to'
-            hobbies.append(tok)
+    # split by commas, semicolons, line breaks, and 'and'
+    chunks = re.split(r"[,;\n]+|\band\b", text)
+    hobbies = []
 
-    return hobbies
+    for chunk in chunks:
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+
+        # remove filler words
+        words = [w for w in re.split(r"\s+", chunk) if w not in ENGLISH_STOPWORDS]
+        phrase = " ".join(words).strip()
+
+        if len(phrase) > 2:
+            hobbies.append(phrase)
+
+    # remove duplicates, keep order
+    seen = set()
+    unique = []
+    for h in hobbies:
+        if h not in seen:
+            seen.add(h)
+            unique.append(h)
+
+    return unique
 
 
-# 3. Face + hobbies → title, prompt, caption 
+# ------------------------------
+# Build the caricature concept
+# ------------------------------
+
 def build_caricature_concept(face_desc: str, hobbies: List[str]) -> CaricatureConcept:
     """
-    Combine the face description and hobbies into:
-    - a title
-    - a detailed prompt for an image model
-    - a short caption for the user
+    Combines:
+      - BLIP face description
+      - extracted hobby phrases
+    into:
+      - title
+      - caption
+      - a Stable Diffusion-style prompt
     """
 
-    # Title: if hobbies exist, use the first one in a playful way
+    # Title
     if hobbies:
-        main_hobby = hobbies[0]
-        title = f"The {main_hobby.capitalize()} Caricature"
+        main = hobbies[0].title()
+        title = f"The {main} Caricature"
     else:
         title = "Personal Caricature"
 
-    # Build the main prompt
-    prompt = (
-        f"A playful caricature of {face_desc}. "
-        "Exaggerate expressive but kind facial features. "
-    )
+    # Prompt Composition
+    prompt_parts = [
+        f"A creative caricature of {face_desc}.",
+        "Emphasize expressive but friendly facial features.",
+    ]
 
     if hobbies:
-        prompt += (
-            "Incorporate the user's interests: "
-            + ", ".join(hobbies)
-            + ". "
+        prompt_parts.append(
+            "Incorporate these interests: " + ", ".join(hobbies) + "."
         )
 
-    prompt += (
-        "Use clean black line art, clear contours, minimal shading, "
-        "so that the drawing can be reproduced by a robotic arm."
+    # style — optimized for robotic arm drawing
+    prompt_parts.append(
+        "Style: clean black line art, clear outlines, minimal shading; "
+        "easy for a robotic arm to draw as a single-line or contour sketch."
     )
 
-    # Simple caption
+    prompt = " ".join(prompt_parts)
+
+    # Caption
     if hobbies:
-        caption = f"A caricature inspired by your passion for {', '.join(hobbies)}."
+        caption = f"A caricature inspired by your interest in {', '.join(hobbies)}."
     else:
         caption = "A playful caricature based on your photo."
 
-    return CaricatureConcept(title=title, caricature_prompt=prompt, caption=caption)
+    return CaricatureConcept(
+        title=title,
+        caricature_prompt=prompt,
+        caption=caption,
+    )
 
 
-# 4. The Agent: glue all steps together
+# ------------------------------
+# PUBLIC ENTRYPOINT
+# ------------------------------
+
 def run_caricature_agent(image: Image.Image, user_text: str) -> Dict[str, str]:
     """
-    Main function to use from outside:
+    Main entrypoint for your backend.
 
-    - image: PIL.Image with the user's face
-    - user_text: free-form text from the user about their hobbies
+    Input:
+      - image (PIL.Image)
+      - user_text (string)
 
-    Returns:
-        dict with keys: title, caricature_prompt, caption
+    Output:
+      dict with:
+        - title
+        - caption
+        - caricature_prompt
     """
-    face_desc = describe_face(image)            # (1) TEMP: stub
-    hobbies = extract_hobbies(user_text)             # (2)
-    concept = build_caricature_concept(face_desc, hobbies)  # (3)
+
+    face_desc = describe_face(image)
+    hobbies = extract_hobbies(user_text)
+    concept = build_caricature_concept(face_desc, hobbies)
+
     return concept.to_dict()

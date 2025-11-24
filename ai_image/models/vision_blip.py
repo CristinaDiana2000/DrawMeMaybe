@@ -1,3 +1,5 @@
+# pyright: reportGeneralTypeIssues=false, reportAttributeAccessIssue=false, reportArgumentType=false, reportCallIssue=false
+
 """
 BLIP-based image describer.
 
@@ -39,7 +41,9 @@ class BlipDescriber:
 
         # Load processor and model
         self.processor = BlipProcessor.from_pretrained(model_name)
-        self.model = BlipForConditionalGeneration.from_pretrained(model_name).to(device)
+        self.model = BlipForConditionalGeneration.from_pretrained(
+            model_name
+        ).to(device)
         self.model.eval()
 
     def describe(self, image: Image.Image) -> BlipDescription:
@@ -47,7 +51,6 @@ class BlipDescriber:
         Generate a caption for the given image.
         BLIP expects a PIL RGB image.
         """
-        # Ensure RGB
         if image.mode != "RGB":
             image = image.convert("RGB")
 

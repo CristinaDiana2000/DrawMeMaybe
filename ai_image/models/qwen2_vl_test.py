@@ -15,13 +15,13 @@ def main():
         device_map="cuda"
     )
 
-    # --- Bild laden & verkleinern ---
+    
     image_path = "/home/rosrunner/drawmemby/DrawMeMaybe/ai_image/image_test/Amir.jpg"
     image = Image.open(image_path).convert("RGB")
     image = image.resize((512, 512))
 
-    # --- WICHTIG: <image> tag ---
-    prompt = "<image>\nBeschreibe die Hobbys dieser Person: Er mag Coding, Gaming und Anime."
+    
+    prompt = "<image>\n Describe the user's hobbies/interests: I like coding, gaming, and watching animes."
 
     print("Preparing inputs...")
     inputs = processor(
@@ -37,7 +37,7 @@ def main():
     )
 
     result = processor.batch_decode(output_ids, skip_special_tokens=True)[0]
-    print("\nQwen2-VL Antwort:\n", result)
+    print("\nQwen2-VL Response:\n", result)
 
 if __name__ == "__main__":
     main()

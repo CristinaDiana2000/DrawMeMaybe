@@ -1,112 +1,121 @@
 <template>
   <div class="app-screen">
-    <div class="app-card">
+    <Card class="camera-card">
       <!-- Title / instructions -->
-      <h1 class="app-card-title mb-1">
-        <i class="bi bi-camera me-2"></i>
+      <template #title>
+        <i class="pi pi-camera" style="margin-right: .5rem;"></i>
         Position yourself in the frame
-      </h1>
-      <p class="app-card-subtitle">
-        Laptop → use the webcam. Phone/Tablet → use the front camera.
-        Make sure you allow camera access. Works best on HTTPS or localhost.
-      </p>
+      </template>
 
-      <!-- Camera preview with SVG head contour -->
-      <div class="camera-preview mb-3">
-        <div class="camera-frame-wrapper">
-          <video
-            ref="videoRef"
-            class="camera-video"
-            autoplay
-            playsinline
-          ></video>
+      <template #subtitle>
+        <p class="camera-subtitle">
+          Laptop → use the webcam. Phone/Tablet → use the front camera.
+          Make sure you allow camera access. Works best on HTTPS or localhost.
+        </p>
+      </template>
 
-          <!-- SVG head contour overlay -->
-          <div class="head-overlay">
-            <svg
-              class="head-svg"
-              viewBox="0 0 200 260"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <!-- Head -->
-              <path
-                d="M100 10
-                   C 65 10, 40 38, 40 80
-                   C 40 120, 55 150, 70 165
-                   C 66 185, 58 205, 55 225
-                   L 145 225
-                   C 142 205, 134 185, 130 165
-                   C 145 150, 160 120, 160 80
-                   C 160 38, 135 10, 100 10 Z"
-                fill="none"
-                stroke="rgba(255,255,255,0.95)"
-                stroke-width="4"
-              />
-              <!-- Shoulders -->
-              <path
-                d="M55 225
-                   C 35 235, 20 250, 15 260
-                   L 185 260
-                   C 180 250, 165 235, 145 225 Z"
-                fill="none"
-                stroke="rgba(255,255,255,0.85)"
-                stroke-width="4"
-              />
-            </svg>
+      <!-- Main content -->
+      <template #content>
+        <!-- Camera preview with SVG head contour -->
+        <div class="camera-preview">
+          <div class="camera-frame-wrapper">
+            <video
+              ref="videoRef"
+              class="camera-video"
+              autoplay
+              playsinline
+            ></video>
+
+            <!-- SVG head contour overlay -->
+            <div class="head-overlay">
+              <svg
+                class="head-svg"
+                viewBox="0 0 200 260"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <!-- Head -->
+                <path
+                  d="M100 10
+                     C 65 10, 40 38, 40 80
+                     C 40 120, 55 150, 70 165
+                     C 66 185, 58 205, 55 225
+                     L 145 225
+                     C 142 205, 134 185, 130 165
+                     C 145 150, 160 120, 160 80
+                     C 160 38, 135 10, 100 10 Z"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.95)"
+                  stroke-width="4"
+                />
+                <!-- Shoulders -->
+                <path
+                  d="M55 225
+                     C 35 235, 20 250, 15 260
+                     L 185 260
+                     C 180 250, 165 235, 145 225 Z"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.85)"
+                  stroke-width="4"
+                />
+              </svg>
+            </div>
+
+            <!-- Soft vignette -->
+            <div class="face-mask"></div>
           </div>
-
-          <!-- Optional vignette -->
-          <div class="face-mask"></div>
         </div>
-      </div>
 
-      <!-- Info / error -->
-      <div v-if="errorMessage" class="text-danger mb-2">
-        {{ errorMessage }}
-      </div>
-      <div v-else class="text-muted small mb-2">
-        Align your face inside the contour, then tap <strong>Capture</strong>.
-      </div>
+        <!-- Info / error -->
+        <div v-if="errorMessage" class="error-text">
+          {{ errorMessage }}
+        </div>
+        <div v-else class="helper-text">
+          Align your face inside the contour, then tap
+          <strong>Capture</strong>.
+        </div>
 
-      <!-- Hidden canvas used only for grabbing a frame -->
-      <canvas ref="canvasRef" class="d-none"></canvas>
+        <!-- Hidden canvas used only for grabbing a frame -->
+        <canvas ref="canvasRef" class="hidden-canvas"></canvas>
+      </template>
 
       <!-- Buttons -->
-      <div class="mt-3 d-flex flex-wrap justify-content-end gap-2">
-        <button
-          type="button"
-          class="btn btn-outline-secondary btn-pill"
-          @click="onRetake"
-          :disabled="!hasPhoto"
-        >
-          Retake
-        </button>
+      <template #footer>
+        <div class="camera-actions">
+          <Button
+            label="Retake"
+            severity="secondary"
+            outlined
+            class="pill-button"
+            @click="onRetake"
+            :disabled="!hasPhoto"
+          />
 
-        <button
-          type="button"
-          class="btn btn-secondary btn-pill"
-          @click="capturePhoto"
-          :disabled="isStarting"
-        >
-          {{ hasPhoto ? "Capture again" : "Capture" }}
-        </button>
+          <Button
+            :label="hasPhoto ? 'Capture again' : 'Capture'"
+            class="pill-button"
+            severity="secondary"
+            @click="capturePhoto"
+            :disabled="isStarting"
+          />
 
-        <button
-          type="button"
-          class="btn btn-dark btn-pill"
-          @click="onContinue"
-          :disabled="!hasPhoto"
-        >
-          Continue
-        </button>
-      </div>
-    </div>
+          <Button
+            label="Continue"
+            icon="pi pi-arrow-right"
+            class="pill-button"
+            @click="onContinue"
+            :disabled="!hasPhoto"
+          />
+        </div>
+      </template>
+    </Card>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
+import Card from "primevue/card";
+import Button from "primevue/button";
 
 const router = useRouter();
 
@@ -206,6 +215,23 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.app-screen {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.camera-card {
+  width: 100%;
+  max-width: 900px;
+}
+
+.camera-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Camera layout */
 .camera-preview {
   background: #000;
   border-radius: 18px;
@@ -214,6 +240,7 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   aspect-ratio: 4 / 3;
+  margin-bottom: 0.75rem;
 }
 
 .camera-frame-wrapper {
@@ -228,7 +255,7 @@ onBeforeUnmount(() => {
   object-fit: cover;
 }
 
-/* Center and scale the head overlay */
+/* Head overlay */
 .head-overlay {
   position: absolute;
   inset: 50%;
@@ -246,7 +273,7 @@ onBeforeUnmount(() => {
   height: 100%;
 }
 
-/* Soft vignette outside the face area */
+/* Vignette */
 .face-mask {
   position: absolute;
   inset: 0;
@@ -258,5 +285,38 @@ onBeforeUnmount(() => {
     );
   pointer-events: none;
   z-index: 1;
+}
+
+/* Messages */
+.error-text {
+  color: #d33;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.helper-text {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Hidden canvas */
+.hidden-canvas {
+  display: none;
+}
+
+/* Button row */
+.camera-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+/* Optional: rounded buttons */
+.pill-button {
+  border-radius: 999px;
 }
 </style>

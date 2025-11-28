@@ -127,7 +127,7 @@ async function onSend() {
   // push user message
   messages.value.push({
     role: "user",
-    content: `<strong>${text}</strong>`,
+    content: `${text}`,
   });
 
   userText.value = "";
@@ -144,6 +144,8 @@ async function onSend() {
   });
 
   isThinking.value = false;
+
+
 
   // TODO later:
   // - send final hobby text to backend

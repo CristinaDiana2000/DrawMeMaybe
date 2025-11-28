@@ -13,11 +13,11 @@
 import { useRouter } from "vue-router";
 import logoSrc from "../assets/logo_robross.png";
 
+
 const router = useRouter();
 
+
 function goToConsent() {
-  // In Streamlit you modified query params.
-  // In Vue we just navigate to the consent route.
   router.push("/consent");
 }
 </script>

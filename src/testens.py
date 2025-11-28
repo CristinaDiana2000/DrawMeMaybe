@@ -11,8 +11,9 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Pipeline laden
 pipe = StableDiffusionImg2ImgPipeline.from_pretrained(
-    "Norod78/sd15-caricature-portraits-blip-captions", 
-    torch_dtype=torch.float16
+    "timbrooks/toonify", 
+    dtype=torch.float16,
+#    use_auth_token=True  # falls private Modelle
 ).to(device)
 
 prompt = (
@@ -21,7 +22,7 @@ prompt = (
 )
 
 # Stärke: Wie stark das Original verändert wird
-strength = random.uniform(0.45, 0.7)
+strength = 0.25
 
 # Seed: Für Zufall
 seed = random.randint(0, 999999999)

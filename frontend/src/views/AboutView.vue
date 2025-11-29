@@ -14,33 +14,64 @@ const goBack = () => {
   <div class="app-screen">
     <Card class="about-card">
       <template #title>
-        Über DrawMeMaybe
+        About DrawMeMaybe
       </template>
 
       <template #subtitle>
-        Ein kleines Kamera- & Karikatur-Experiment ✨
+        A simple and friendly caricature experience 🎨
       </template>
 
       <template #content>
         <p>
-          Diese App hilft Nutzer:innen, sich richtig vor der Kamera zu positionieren,
-          bevor eine Karikatur erzeugt wird.
+          <strong>DrawMeMaybe</strong> is an interactive experience developed as part of a university
+          project at the <strong>Hochschule Augsburg – University of Applied Sciences</strong>.
+          The goal is to create a fun, personalized caricature based on a photo and a short
+          piece of information you share about yourself.
         </p>
+
         <p>
-          Der Ablauf ist grob:
+          The experience guides you step-by-step so you can comfortably take part:
         </p>
+
         <ul>
-          <li>Live-Kamera mit Rahmen zur Orientierung</li>
-          <li>Überprüfung der Kopfposition (Mediapipe/OpenCV)</li>
-          <li>Automatisches Foto, sobald alles passt</li>
-          <li>Generierung einer Karikatur & eines kurzen Textes</li>
+          <li>You review and confirm how your data will be used</li>
+          <li>You position your face correctly to take a photo</li>
+          <li>You tell us one hobby, interest, or fun fact</li>
+          <li>Your personalized caricature is then created and drawn</li>
         </ul>
+
+        <p>
+          The process is designed to be simple, respectful of your privacy, and enjoyable.
+          Your data is used only during this session and is <strong>not stored permanently</strong>.
+        </p>
+
+        <p>
+          <strong>Supervision:</strong><br>
+          This project is created under the academic supervision of Prof. Dr. rer. nat. Constantin Wanninger
+          at Hochschule Augsburg.
+        </p>
+
+        <p>
+          <strong>Copyright:</strong><br>
+          All project materials — including software, interface design, and generated caricatures —
+          are part of the <em>DrawMeMaybe</em> project and may be used only within this research
+          and demonstration environment.
+        </p>
+
+        <p>
+          <strong>Contact:</strong><br>
+          fi-ws25-drawmemaybe@hs-augsburg.de
+        </p>
+
+        <p>
+          Thank you for taking part — we hope you enjoy your caricature!
+        </p>
       </template>
 
       <template #footer>
         <div class="about-footer">
           <Button
-            label="Zurück"
+            label="Back"
             icon="pi pi-arrow-left"
             outlined
             @click="goBack"

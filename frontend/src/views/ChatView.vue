@@ -1,79 +1,91 @@
 <template>
   <div class="app-screen">
-    <div class="app-card chat-card">
+    <Card class="chat-card">
       <!-- Header -->
-      <h1 class="app-card-title mb-1">
-        <i class="bi bi-chat-square-text me-2"></i>
-        Tell us something about you
-      </h1>
-      <p class="app-card-subtitle">
-        Share a hobby, interest, or fun fact. We'll use it as inspiration for your caricature.
-      </p>
+      <template #title>
+        <span class="title-row">
+          <i class="pi pi-comments" style="margin-right: .5rem;"></i>
+          Tell us something about you
+        </span>
+      </template>
+
+      <template #subtitle>
+        <p class="chat-subtitle">
+          Share a hobby, interest, or fun fact. We'll use it as inspiration for your caricature.
+        </p>
+      </template>
 
       <!-- Chat area -->
-      <div class="chat-scroll mb-3">
-        <div
-          v-for="(msg, idx) in messages"
-          :key="idx"
-          class="chat-row"
-          :class="msg.role === 'assistant' ? 'chat-left' : 'chat-right'"
-        >
-          <!-- Assistant left -->
-          <template v-if="msg.role === 'assistant'">
-            <img :src="AI_ICON" alt="Assistant" class="avatar me-2" />
-            <div class="bubble bubble-assistant">
-              <span v-html="msg.content"></span>
-            </div>
-          </template>
+      <template #content>
+        <div class="chat-scroll">
+          <div
+            v-for="(msg, idx) in messages"
+            :key="idx"
+            class="chat-row"
+            :class="msg.role === 'assistant' ? 'chat-left' : 'chat-right'"
+          >
+            <!-- Assistant left -->
+            <template v-if="msg.role === 'assistant'">
 
-          <!-- User right -->
-          <template v-else>
-            <div class="bubble bubble-user">
-              <span v-html="msg.content"></span>
-            </div>
-            <img :src="USER_ICON" alt="You" class="avatar ms-2" />
-          </template>
+              <img :src="AI_ICON" alt="Assistant" class="avatar avatar-ai" />
+              <div class="bubble bubble-assistant">
+                <span v-html="msg.content"></span>
+              </div>
+            </template>
+
+            <!-- User right -->
+            <template v-else>
+              <div class="user-wrapper"></div>
+                <div class="bubble bubble-user">
+                  <span v-html="msg.content"></span>
+                </div>
+                <Avatar icon="pi pi-user" class="avatar-user" />
+            </template>
+          </div>
         </div>
-      </div>
 
-      <!-- Input -->
-      <div class="chat-input-row">
-        <input
-          v-model="userText"
-          type="text"
-          class="form-control chat-input me-2"
-          placeholder="Tell me about your hobbies or interests…"
-          @keyup.enter="onSend"
-        />
-        <button
-          type="button"
-          class="btn btn-dark btn-pill"
-          @click="onSend"
-          :disabled="isThinking"
-        >
-          <i class="bi bi-send me-1"></i>
-          Send
-        </button>
-      </div>
+        <!-- Input row -->
+        <div class="chat-input-row">
+          <InputText
+            v-model="userText"
+            type="text"
+            class="chat-input"
+            placeholder="Tell me about your hobbies or interests…"
+            @keyup.enter="onSend"
+          />
+          <Button
+            type="button"
+            label="Send"
+            icon="pi pi-send"
+            class="send-button"
+            @click="onSend"
+            :disabled="isThinking"
+          />
+        </div>
 
-      <div v-if="errorMessage" class="text-danger mt-1">
-        {{ errorMessage }}
-      </div>
-    </div>
+        <div v-if="errorMessage" class="error-text">
+          {{ errorMessage }}
+        </div>
+      </template>
+    </Card>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import Card from "primevue/card";
+import Button from "primevue/button";
+import InputText from "primevue/inputtext";
+import Avatar from 'primevue/avatar';
+import AiAvatar from "../assets/logo_robross.png";
 
 const router = useRouter();
 
-// you can later replace these URLs with local assets and import them
-const USER_ICON =
-  "https://cdn-icons-png.flaticon.com/512/1077/1077012.png";
-const AI_ICON =
-  "https://raw.githubusercontent.com/Cristina2000-hub/DrawMeMaybe/frontend/frontend/uploads/Designer%20(1).png";
+
+const USER_ICON = null;
+
+const AI_ICON = AiAvatar;
 
 const messages = ref([
   {
@@ -144,21 +156,33 @@ async function onSend() {
   });
 
   isThinking.value = false;
-
-
-
-  // TODO later:
-  // - send final hobby text to backend
-  // - potentially move to next step automatically
-  // For now we stay on this screen; user can just say "Ok" and you can
-  // navigate them away from here (e.g. router.push("/")) somewhere else if needed.
 }
 </script>
 
 <style scoped>
+.app-screen {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Card layout */
 .chat-card {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+}
+
+.title-row {
+  display: inline-flex;
+  align-items: center;
+}
+
+.chat-subtitle {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 0.95rem;
+  color: #4b5563;
 }
 
 /* Scrollable chat area */
@@ -167,6 +191,7 @@ async function onSend() {
   max-height: 50vh;
   overflow-y: auto;
   padding-right: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 /* One row per message */
@@ -213,14 +238,60 @@ async function onSend() {
   object-fit: cover;
 }
 
+.avatar-ai {
+  margin-right: 0.5rem;
+}
+
+.avatar-user {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+
+
+.chat-avatar-user {
+  background: #e5e7eb;
+  color: #111827;
+  margin-left: 0.5rem;
+  width: 34px;
+  height: 34px;
+  font-size: 1.3rem;
+}
+
+
 /* Input row */
 .chat-input-row {
   display: flex;
   align-items: center;
-  margin-top: 0.75rem;
+  gap: 0.5rem;
 }
 
-.chat-input {
+/* ✔ WHITE input field*/
+.chat-input.p-inputtext {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-radius: 999px !important;
+  padding: 0.75rem 1rem !important;
+  width: 100%;
+  flex: 1;
+}
+
+/* Send button */
+.send-button {
   border-radius: 999px;
+}
+
+/* Error text */
+.error-text {
+  margin-top: 0.4rem;
+  color: #d33;
+  font-size: 0.88rem;
 }
 </style>

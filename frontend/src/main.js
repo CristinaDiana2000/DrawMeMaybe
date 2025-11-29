@@ -5,6 +5,8 @@ import PrimeVue from 'primevue/config';
 import Button from 'primevue/button';
 import Aura from '@primeuix/themes/aura';
 import 'primeicons/primeicons.css';
+import Avatar from 'primevue/avatar'
+
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -24,6 +26,7 @@ app.use(PrimeVue, {theme: {preset: Aura }});
 
 //general components
 app.component('Button', Button);
+app.component('Avatar', Avatar);
 
 app.use(router)
 

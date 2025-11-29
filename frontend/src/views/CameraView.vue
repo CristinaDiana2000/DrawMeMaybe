@@ -19,49 +19,55 @@
         <!-- Camera preview with SVG head contour -->
         <div class="camera-preview">
           <div class="camera-frame-wrapper">
+            <!-- Live video OR frozen captured image -->
             <video
+              v-if="!hasPhoto"
               ref="videoRef"
               class="camera-video"
               autoplay
               playsinline
             ></video>
 
-            <!-- SVG head contour overlay -->
-            <div class="head-overlay">
+            <img
+              v-else
+              :src="photoDataUrl"
+              alt="Captured photo"
+              class="camera-video"
+            />
+
+            <!-- Simple oval face overlay only during live preview -->
+            <div v-if="!hasPhoto" class="head-overlay">
               <svg
                 class="head-svg"
                 viewBox="0 0 200 260"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <!-- Head -->
-                <path
-                  d="M100 10
-                     C 65 10, 40 38, 40 80
-                     C 40 120, 55 150, 70 165
-                     C 66 185, 58 205, 55 225
-                     L 145 225
-                     C 142 205, 134 185, 130 165
-                     C 145 150, 160 120, 160 80
-                     C 160 38, 135 10, 100 10 Z"
+                <ellipse
+                  cx="100"
+                  cy="110"
+                  rx="52"
+                  ry="70"
                   fill="none"
                   stroke="rgba(255,255,255,0.95)"
-                  stroke-width="4"
-                />
-                <!-- Shoulders -->
-                <path
-                  d="M55 225
-                     C 35 235, 20 250, 15 260
-                     L 185 260
-                     C 180 250, 165 235, 145 225 Z"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.85)"
                   stroke-width="4"
                 />
               </svg>
             </div>
 
-            <!-- Soft vignette -->
-            <div class="face-mask"></div>
+            <!-- Soft vignette only during live preview -->
+            <div v-if="!hasPhoto" class="face-mask"></div>
+
+            <!-- Phone-style shutter button (only when live) -->
+            <div v-if="!hasPhoto" class="shutter-container">
+              <button
+                type="button"
+                class="shutter-button"
+                @click.stop="capturePhoto"
+                :disabled="isStarting"
+              >
+                <span class="shutter-inner"></span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -70,8 +76,12 @@
           {{ errorMessage }}
         </div>
         <div v-else class="helper-text">
-          Align your face inside the contour, then tap
-          <strong>Capture</strong>.
+          <template v-if="!hasPhoto">
+            Align your face inside the oval, then tap the capture button.
+          </template>
+          <template v-else>
+            If you're happy with the photo, tap <strong>Continue</strong> – or <strong>Retake</strong> to try again.
+          </template>
         </div>
 
         <!-- Hidden canvas used only for grabbing a frame -->
@@ -88,14 +98,6 @@
             class="pill-button"
             @click="onRetake"
             :disabled="!hasPhoto"
-          />
-
-          <Button
-            :label="hasPhoto ? 'Capture again' : 'Capture'"
-            class="pill-button"
-            severity="secondary"
-            @click="capturePhoto"
-            :disabled="isStarting"
           />
 
           <Button
@@ -130,25 +132,61 @@ const errorMessage = ref("");
 const mediaStream = ref(null);
 
 async function startCamera() {
-  isStarting.value = true;
   errorMessage.value = "";
 
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: "user" },
+    isStarting.value = true;
+
+    const baseConstraints = {
+      video: {
+        facingMode: { ideal: "user" }, // front camera on phones/tablets
+        width: { ideal: 1280 },
+        height: { ideal: 720 },
+      },
       audio: false,
-    });
+    };
+
+    let stream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia(baseConstraints);
+    } catch (err) {
+      console.warn(
+        "Primary constraints failed, falling back to generic video:",
+        err
+      );
+      // fallback – some mobile browsers are picky about constraints
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: false,
+      });
+    }
 
     mediaStream.value = stream;
 
     if (videoRef.value) {
-      videoRef.value.srcObject = stream;
+      const video = videoRef.value;
+      video.srcObject = stream;
+
+      const onLoaded = async () => {
+        video.removeEventListener("loadedmetadata", onLoaded);
+        try {
+          await video.play();
+        } catch (playErr) {
+          console.warn("Video play() failed:", playErr);
+        }
+        // ✅ camera is now really ready
+        isStarting.value = false;
+      };
+
+      // wait until we actually know width/height etc.
+      video.addEventListener("loadedmetadata", onLoaded);
+    } else {
+      isStarting.value = false;
     }
   } catch (err) {
     console.error("Error accessing camera:", err);
     errorMessage.value =
       "Could not access the camera. Please allow permissions and reload the page.";
-  } finally {
     isStarting.value = false;
   }
 }
@@ -161,6 +199,11 @@ function stopCamera() {
 }
 
 function capturePhoto() {
+  if (isStarting.value) {
+    errorMessage.value = "Camera is still starting. Please wait a moment.";
+    return;
+  }
+
   const video = videoRef.value;
   const canvas = canvasRef.value;
   if (!video || !canvas) return;
@@ -183,6 +226,16 @@ function capturePhoto() {
   const dataUrl = canvas.toDataURL("image/jpeg", 0.9);
   photoDataUrl.value = dataUrl;
   hasPhoto.value = true;
+  errorMessage.value = "";
+
+  // ✅ freeze preview: stop camera stream, video will disappear, img will show
+  stopCamera();
+
+  // ✅ Save photo locally so other views / backend can access it
+  sessionStorage.setItem("drawmemaybe_photo", dataUrl);
+
+  //access photo
+  //z.b const photo = sessionStorage.getItem("drawmemaybe_photo");
 
   console.log("Captured photo data URL length:", dataUrl.length);
 }
@@ -191,12 +244,15 @@ function onRetake() {
   hasPhoto.value = false;
   photoDataUrl.value = null;
   errorMessage.value = "";
+  // restart live camera preview
+  startCamera();
 }
 
 function onContinue() {
   if (!hasPhoto.value) return;
 
   // TODO later: send photoDataUrl.value to backend before routing
+  // Or read from sessionStorage in the next step
   router.push("/chat");
 }
 
@@ -255,13 +311,13 @@ onBeforeUnmount(() => {
   object-fit: cover;
 }
 
-/* Head overlay */
+/* Head overlay – bigger oval, centered, tablet-friendly */
 .head-overlay {
   position: absolute;
   inset: 50%;
   transform: translate(-50%, -50%);
-  width: 30%;
-  height: 68%;
+  width: 65%;
+  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -280,11 +336,48 @@ onBeforeUnmount(() => {
   background:
     radial-gradient(
       ellipse at center,
-      rgba(0, 0, 0, 0) 28%,
+      rgba(0, 0, 0, 0) 30%,
       rgba(0, 0, 0, 0.55) 80%
     );
   pointer-events: none;
   z-index: 1;
+}
+
+/* Phone-style shutter button */
+.shutter-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.shutter-button {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.shutter-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.shutter-inner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
 }
 
 /* Messages */
@@ -315,7 +408,7 @@ onBeforeUnmount(() => {
   margin-top: 0.75rem;
 }
 
-/* Optional: rounded buttons */
+/* Rounded buttons */
 .pill-button {
   border-radius: 999px;
 }

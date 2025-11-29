@@ -15,4 +15,9 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  server: {
+    host: true,   // wichtig, damit Handy im WLAN drauf kommt
+    port: 5173,
+    // https: true  <-- das bitte entfernen/auskommentieren
+  },
 })

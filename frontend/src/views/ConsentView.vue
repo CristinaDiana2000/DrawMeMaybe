@@ -179,9 +179,18 @@ async function onAccept() {
   // Wenn Checkbox nicht gesetzt oder Name leer → abbrechen
   if (!validate()) return;
 
+  //saves consent flag in browser storage
+  sessionStorage.setItem("drawnenayve_consent_accepted", "true");
+
   const trimmedName = name.value.trim();
   // TODO: backend call später
   router.push("/camera");
+}
+
+//if the user declines it gets cleared
+function onDecline() {
+  sessionStorage.removeItem("drawnenayve_consent_accepted");
+  router.push("/");
 }
 </script>
 

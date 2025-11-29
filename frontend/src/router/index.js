@@ -19,4 +19,18 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, from, next) => {
+  const consentRequiredPaths = ["/camera", "/chat"];
+  const consentAccepted =
+    localStorage.getItem("drawmemaybe_consent_accepted") === "true";
+
+  if (consentRequiredPaths.includes(to.path) && !consentAccepted) {
+    // User tries to skip → send them to consent
+    return next("/consent");
+  }
+
+  next();
+});
+
 export default router;
+

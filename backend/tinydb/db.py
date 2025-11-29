@@ -38,3 +38,12 @@ def save_consent(session_id: str, consent_given: bool, name: str | None = None):
 def get_session(session_id: str):
     Session = Query()
     return sessions_table.get(Session.session_id == session_id)
+
+def list_sessions():
+    """Return all sessions as a list of dicts."""
+    return sessions_table.all()
+
+
+def list_consents():
+    """Return all consents as a list of dicts."""
+    return consents_table.all()

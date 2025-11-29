@@ -177,33 +177,26 @@ function validate() {
   return true;
 }
 
-// create or reuse session_id from backend
+// always create a fresh session on accept (and store it)
+// so the session_id in sessions and consents will match
 async function ensureSession() {
-  let sessionId = sessionStorage.getItem(SESSION_KEY);
+  const res = await fetch(`${API_BASE}/session`, {
+    method: "POST",
+  });
 
-  if (!sessionId) {
-    const res = await fetch(`${API_BASE}/session`, {
-      method: "POST",
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to create session");
-    }
-
-    const data = await res.json();
-    sessionId = data.session_id;
-    sessionStorage.setItem(SESSION_KEY, sessionId);
+  if (!res.ok) {
+    throw new Error("Failed to create session");
   }
 
+  const data = await res.json();
+  const sessionId = data.session_id;
+  sessionStorage.setItem(SESSION_KEY, sessionId);
   return sessionId;
 }
 
-// optional: pre-create a session when the consent screen loads
+// clear any old session id when the consent screen loads
 onMounted(() => {
-  ensureSession().catch((err) => {
-    console.error("Error creating session:", err);
-    // don't block UI, just log; user can still try again on Accept
-  });
+  sessionStorage.removeItem(SESSION_KEY);
 });
 
 async function onAccept() {
@@ -245,8 +238,7 @@ async function onAccept() {
 function onDecline() {
   sessionStorage.removeItem(CONSENT_KEY);
   sessionStorage.removeItem(NAME_KEY);
-  // optional: we leave the session id as-is, but you could also:
-  // sessionStorage.removeItem(SESSION_KEY);
+  sessionStorage.removeItem(SESSION_KEY);
   router.push("/");
 }
 </script>

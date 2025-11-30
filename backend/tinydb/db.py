@@ -47,3 +47,16 @@ def list_sessions():
 def list_consents():
     """Return all consents as a list of dicts."""
     return consents_table.all()
+
+def complete_session(session_id: str) -> bool:
+    """Markiert eine Session als abgeschlossen."""
+    Session = Query()
+    updated = sessions_table.update(
+        {
+            "status": "completed",
+            "completed_at": now_iso(),
+        },
+        Session.session_id == session_id,
+    )
+    # TinyDB update() gibt eine Liste der geänderten Dokument-IDs zurück
+    return len(updated) > 0

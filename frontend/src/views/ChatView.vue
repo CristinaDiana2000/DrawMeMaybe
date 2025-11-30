@@ -11,7 +11,7 @@
 
       <template #subtitle>
         <p class="chat-subtitle">
-          Share a hobby, interest, or fun fact. We'll use it as inspiration for your caricature.
+          Share one hobby, interest, or fun fact. We’ll use it as inspiration for your caricature.
         </p>
       </template>
 
@@ -26,7 +26,6 @@
           >
             <!-- Assistant left -->
             <template v-if="msg.role === 'assistant'">
-
               <img :src="AI_ICON" alt="Assistant" class="avatar avatar-ai" />
               <div class="bubble bubble-assistant">
                 <span v-html="msg.content"></span>
@@ -35,11 +34,16 @@
 
             <!-- User right -->
             <template v-else>
-              <div class="user-wrapper"></div>
+              <div class="user-wrapper">
                 <div class="bubble bubble-user">
                   <span v-html="msg.content"></span>
                 </div>
-                <Avatar icon="pi pi-user" class="avatar-user" />
+                <Avatar
+                  icon="pi pi-user"
+                  shape="circle"
+                  class="avatar-user"
+                />
+              </div>
             </template>
           </div>
         </div>
@@ -52,6 +56,7 @@
             class="chat-input"
             placeholder="Tell me about your hobbies or interests…"
             @keyup.enter="onSend"
+            :disabled="isThinking || hasUserSent"
           />
           <Button
             type="button"
@@ -59,7 +64,7 @@
             icon="pi pi-send"
             class="send-button"
             @click="onSend"
-            :disabled="isThinking"
+            :disabled="isThinking || hasUserSent"
           />
         </div>
 
@@ -77,15 +82,13 @@ import { useRouter } from "vue-router";
 import Card from "primevue/card";
 import Button from "primevue/button";
 import InputText from "primevue/inputtext";
-import Avatar from 'primevue/avatar';
-import AiAvatar from "../assets/logo_robross.png";
+import Avatar from "primevue/avatar";
 
 const router = useRouter();
 
-
-const USER_ICON = null;
-
-const AI_ICON = AiAvatar;
+// Assistent-Icon (Remote-URL, damit kein Asset-Import kaputt geht)
+const AI_ICON =
+  "https://raw.githubusercontent.com/Cristina2000-hub/DrawMeMaybe/frontend/frontend/uploads/Designer%20(1).png";
 
 const messages = ref([
   {
@@ -98,6 +101,7 @@ const messages = ref([
 const userText = ref("");
 const errorMessage = ref("");
 const isThinking = ref(false);
+const hasUserSent = ref(false); // 🔹 User darf nur 1x senden
 
 function validate() {
   if (!userText.value.trim()) {
@@ -121,31 +125,37 @@ function buildAssistantResponse(raw) {
     travel: "world explorer",
     sports: "sports fan",
     cooking: "kitchen creative",
+    climbing: "climbing enthusiast",
+    bouldering: "bouldering hero",
   };
 
   const tag = tagMap[keyword] || "original character";
 
   return (
     `Got it! You mentioned <strong>${keyword}</strong> — that sounds like great material ` +
-    `for a caricature. We'll treat you as our next <strong>${tag}</strong>.`
+    `for your caricature. We'll treat you as our next <strong>${tag}</strong> and let the system ` +
+    `use this as inspiration for your drawing.`
   );
 }
 
 async function onSend() {
+  // schon gesendet? → nix mehr machen
+  if (hasUserSent.value) return;
   if (!validate() || isThinking.value) return;
 
   const text = userText.value.trim();
 
-  // push user message
+  // User-Nachricht anzeigen
   messages.value.push({
     role: "user",
-    content: `${text}`,
+    content: text,
   });
 
   userText.value = "";
   isThinking.value = true;
+  hasUserSent.value = true;
 
-  // fake small delay (later: call backend instead)
+  // kleiner Fake-Delay (später: Backend-Call hier)
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   const reply = buildAssistantResponse(text);
@@ -156,6 +166,12 @@ async function onSend() {
   });
 
   isThinking.value = false;
+
+  // Hobby merken für später (Backend etc.)
+  sessionStorage.setItem("drawmemaybe_hobby", text);
+
+  // 🔹 Direkt weiter zur Status-View
+  router.push("/status");
 }
 </script>
 
@@ -246,7 +262,8 @@ async function onSend() {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #e5e7eb;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
   color: #111827;
   display: flex;
   align-items: center;
@@ -255,16 +272,11 @@ async function onSend() {
   margin-left: 0.5rem;
 }
 
-
-.chat-avatar-user {
-  background: #e5e7eb;
-  color: #111827;
-  margin-left: 0.5rem;
-  width: 34px;
-  height: 34px;
-  font-size: 1.3rem;
+/* User wrapper for right side */
+.user-wrapper {
+  display: flex;
+  align-items: flex-end;
 }
-
 
 /* Input row */
 .chat-input-row {
@@ -273,8 +285,10 @@ async function onSend() {
   gap: 0.5rem;
 }
 
-/* ✔ WHITE input field*/
-.chat-input.p-inputtext {
+/* ✔ WHITE input field */
+.chat-input.p-inputtext,
+.chat-input.p-inputtext:enabled:hover,
+.chat-input.p-inputtext:enabled:focus {
   background: #ffffff !important;
   color: #111111 !important;
   border-radius: 999px !important;

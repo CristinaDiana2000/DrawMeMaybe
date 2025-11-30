@@ -4,6 +4,11 @@
       "session_id": "ea6472b1-a714-4675-aca0-d3dc048bd860",
       "created_at": "2025-11-29T04:46:00.243285Z",
       "status": "created"
+    },
+    "2": {
+      "session_id": "544bf4e2-b734-40c3-9a71-ff6009833770",
+      "created_at": "2025-11-30T00:11:27.668855Z",
+      "status": "created"
     }
   },
   "consents": {
@@ -16,6 +21,12 @@
       "session_id": "158a0848-b76b-472b-8508-1ae926059ebc",
       "consent_given": true,
       "timestamp": "2025-11-29T14:34:45.269996Z",
+      "name": "Cristina"
+    },
+    "3": {
+      "session_id": "544bf4e2-b734-40c3-9a71-ff6009833770",
+      "consent_given": true,
+      "timestamp": "2025-11-30T00:11:27.686376Z",
       "name": "Cristina"
     }
   }

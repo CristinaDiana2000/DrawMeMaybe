@@ -1,8 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from .tinydb.db import create_session, save_consent, list_sessions, list_consents
+from .tinydb.db import create_session, save_consent, list_sessions, list_consents, complete_session
 
 app = FastAPI()
 
@@ -26,6 +26,9 @@ class ConsentPayload(BaseModel):
     consent_given: bool
     name: str | None = None
 
+class SessionCompletePayload(BaseModel):
+    session_id: str
+
 
 @app.get("/health")
 def health_check():
@@ -46,6 +49,19 @@ def consent_endpoint(payload: ConsentPayload):
         name=payload.name,
     )
     return {"ok": True}
+
+@app.post("/session/complete")
+def complete_session_endpoint(payload: SessionCompletePayload):
+    """
+    Markiert eine Session als abgeschlossen.
+    Wird normalerweise vom letzten Screen (z.B. Danke-Screen) aufgerufen.
+    """
+    success = complete_session(payload.session_id)
+    if not success:
+        # Session nicht gefunden
+        raise HTTPException(status_code=404, detail="Session not found")
+    return {"ok": True}
+
 
 @app.get("/debug/sessions")
 def debug_sessions():

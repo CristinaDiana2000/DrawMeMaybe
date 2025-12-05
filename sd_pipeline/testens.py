@@ -16,7 +16,8 @@ pipe = StableDiffusionImg2ImgPipeline.from_pretrained(
 
 # Prompt definieren 
 prompt = (
-    "funny caricature, huge head, tiny body, exaggerated features, cartoon style, bold outlines, simple shapes"
+    #"funny caricature, huge head, tiny body, exaggerated features, cartoon style, bold outlines, simple shapes"
+    
 
 )
 

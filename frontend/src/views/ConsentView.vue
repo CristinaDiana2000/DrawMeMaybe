@@ -153,7 +153,8 @@ import InputText from "primevue/inputtext";
 import Checkbox from "primevue/checkbox";
 
 const router = useRouter();
-const API_BASE = "http://127.0.0.1:8000";
+//const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = `http://${window.location.hostname}:8000`;
 
 // frontend keys stay as you had them
 const CONSENT_KEY = "drawmemaybe_consent_accepted";

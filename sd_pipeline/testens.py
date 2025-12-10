@@ -9,7 +9,7 @@ image_path = "src/assets/whiteguy2.png"
 user_text = "I love climbing, coding and cooking"
 
 # Inputbild 
-init_image = Image.open("src/assets/whiteguy2.png").convert("RGB")
+init_image = Image.open("sd_pipeline/assets/whiteguy2.png").convert("RGB")
 init_image = init_image.resize((512, 512))
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -22,7 +22,7 @@ pipe = StableDiffusionImg2ImgPipeline.from_pretrained(
 #1.Step
 print("Running agent...")
 #Prompt from agent
-agent_result = run_caricature_agent(image, user_text)
+agent_result = run_caricature_agent(init_image, user_text)
 prompt = agent_result['caricature_prompt']
 
 print(f"✓ Agent result:")

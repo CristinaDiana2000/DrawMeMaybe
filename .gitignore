@@ -2,8 +2,5 @@ ve.venv/
 venv/
 __pycache__/
 .venv
-<<<<<<< HEAD
 node_modules/
-=======
-node_modules/
->>>>>>> aa9658cfa21139adb5235f8184dd6442e35551b7
+LoRAs/

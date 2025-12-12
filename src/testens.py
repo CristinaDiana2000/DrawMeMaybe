@@ -1,23 +1,179 @@
-import requests
+import cv2
+import numpy as np
+from PIL import Image
+import torch
+from diffusers import StableDiffusionXLInpaintPipeline
+import mediapipe as mp  #GAB HIER PROBLEME
 
-api_url = "https://api.deepai.org/api/cartoon-gan"
-api_key = "DEIN_API_KEY"
+# -----------------------------
+# 1. Originalbild laden
+# -----------------------------
+input_path = "src/assets/whiteguy2.png"
+img = cv2.imread(input_path)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-with open("src/assets/whiteguy2.png", "rb") as f:
-    response = requests.post(
-        api_url,
-        files={"image": f},
-        headers={"api-key": api_key}
-    )
+# -----------------------------
+# 2. Gesichtserkennung
+# -----------------------------
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 
-data = response.json()
-print(data)  # Zeigt die komplette Antwort, um die richtigen Keys zu sehen
+# -----------------------------
+# 3. Maske erstellen
+# -----------------------------
+mask = np.zeros((img.shape[0], img.shape[1]), dtype=np.uint8)
 
-# Beispiel, wenn die API 'output' als Liste zurückgibt
-if "output" in data and len(data["output"]) > 0:
-    image_url = data["output"][0]
-else:
-    raise ValueError("Kein Bild in der Antwort gefunden")
+for (x, y, w, h) in faces:
+    # Rechteck etwas größer als Gesicht
+    padding = 10
+    x1, y1 = max(0, x-padding), max(0, y-padding)
+    x2, y2 = min(img.shape[1], x+w+padding), min(img.shape[0], y+h+padding)
+    cv2.rectangle(mask, (x1, y1), (x2, y2), 255, -1)
+
+# Maske weichzeichnen
+mask = cv2.GaussianBlur(mask, (15,15), 0)
+
+# Maske speichern
+mask_pil = Image.fromarray(mask)
+mask_pil.save("src/assets/face_mask.png")
+print("Maskenbild gespeichert: src/assets/face_mask.png")
+
+# -----------------------------
+# 4. PIPELINE LADEN (FP16 + Low VRAM)
+# -----------------------------
+pipe = StableDiffusionXLInpaintPipeline.from_pretrained(
+    "stabilityai/stable-diffusion-xl-base-1.0",
+    torch_dtype=torch.float16,
+    use_safetensors=True
+)
+pipe.load_lora_weights("LoRAs/Urabewe_Caricature.safetensors")
+
+pipe.safety_checker = None
+pipe.enable_attention_slicing()
+pipe.enable_sequential_cpu_offload()
+
+# -----------------------------
+# 5. INPUT BILD + MASKE
+# -----------------------------
+init_img = Image.open("src/assets/whiteguy2.png").convert("RGB").resize((384,384))
+mask_img = Image.open("src/assets/face_mask.png").convert("L").resize((384,384))
+
+# -----------------------------
+# 6. PROMPT (stärkere Karikatur)
+# -----------------------------
+prompt = (
+    "caricature of the person in the masked area, keep facial likeness, "
+    "exaggerated eyes, big nose, wide mouth, funny expression, humorous, stylized, colorful sketch"
+)
+
+# -----------------------------
+# 7. GENERATION PARAMS
+# -----------------------------
+result = pipe(
+    prompt=prompt,
+    image=init_img,
+    mask_image=mask_img,
+    strength=0.5,          # stärkerer Effekt
+    num_inference_steps=25,
+    guidance_scale=5.0
+).images[0]
+
+# -----------------------------
+# 8. OUTPUT
+# -----------------------------
+result.save("src/assets/caricature_inpaint.png")
+print("Fertig!")
+
+
+
+
+
+# -------------------------------------------------------------- HOBBYMASKE GENERIEREN
+
+img = cv2.imread("src/assets/caricature_inpaint.png")
+h, w = img.shape[:2]
+
+# -----------------------------------
+# 2. Selfie-Segmentation (Personenmaske)
+# -----------------------------------
+mp_selfie = mp.solutions.selfie_segmentation.SelfieSegmentation(model_selection=1)
+results = mp_selfie.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+
+# results.segmentation_mask = Werte 0..1
+segmask = results.segmentation_mask
+segmask = (segmask * 255).astype(np.uint8)
+
+# -----------------------------------
+# 3. Hobby-Maske generieren:
+#    Wir nehmen unteren Körperbereich als "weiß"
+# -----------------------------------
+mask = np.zeros((h, w), dtype=np.uint8)
+
+# Bereich unter dem Gesicht (ungefähr Mitte nach unten)
+# Du kannst das anpassen
+mask[int(h*0.45):int(h*0.95), :] = 255
+
+# Segmentierung UND Bereich kombinieren:
+mask = cv2.bitwise_and(mask, segmask)
+
+# Leicht weichzeichnen für natürlicheren Übergang
+mask = cv2.GaussianBlur(mask, (25,25), 0)
+
+# -----------------------------------
+# 4. Maske speichern
+# -----------------------------------
+mask_pil = Image.fromarray(mask)
+mask_pil.save("src/assets/hobby_mask.png")
+
+print("Hobby-Maske gespeichert unter src/assets/hobby_mask.png")
+
+
+
+
+
+# -------------------------------------------------------------- ZWEITE INPAINTING-RUN FÜR HOBBY
+
+# -----------------------------
+# 1. Vorheriges Ergebnis laden
+# -----------------------------
+first_result = Image.open("src/assets/caricature_inpaint.png").convert("RGB")
+
+# -----------------------------
+# 2. Neue Maske für Hobby erstellen
+# -----------------------------
+# Weiß = Bereich, der ersetzt wird (z.B. Hände/Platz für Objekt)
+# Schwarz = bleibt unverändert
+hobby_mask = Image.open("src/assets/hobby_mask.png").convert("L").resize(first_result.size)
+
+# -----------------------------
+# 3. Prompt für Hobby
+# -----------------------------
+hobby_prompt = (
+    "caricature of the person in the masked area, keep facial likeness, "
+    "exaggerated features, humorous, stylized, gaming headset on the head"
+)
+
+
+# -----------------------------
+# 4. Zweite Generierung
+# -----------------------------
+second_result = pipe(
+    prompt=hobby_prompt,
+    image=first_result,
+    mask_image=hobby_mask,
+    strength=0.7,          # Effekt nur auf Maskenbereich
+    num_inference_steps=25,
+    guidance_scale=4.5
+).images[0]
+
+# -----------------------------
+# 5. Ergebnis speichern
+# -----------------------------
+second_result.save("src/assets/caricature_with_hobby.png")
+print("Fertig! Ergebnis mit Hobby gespeichert.")
+
+
+
 
 
 

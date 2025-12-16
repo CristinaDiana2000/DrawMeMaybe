@@ -4,7 +4,7 @@ from pathlib import Path
 from PIL import Image
 from ai_image.agent.caricature_agent import run_caricature_agent
 
-IMAGE_PATH = "sd_pipeline/assets/whiteguy2.png"
+IMAGE_PATH = "ai_image/sd_pipeline/assets/whiteguy2.png"
 USER_TEXT = "I love climbing, coding and cooking"
 OUT_JSON = "sd_pipeline/agent_output.json"
 

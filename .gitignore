@@ -11,3 +11,4 @@ pycache/
 *.pyc
 __pycache__/
 db.json
+LoRAs/

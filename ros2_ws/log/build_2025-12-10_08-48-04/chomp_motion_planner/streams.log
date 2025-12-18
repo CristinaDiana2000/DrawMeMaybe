@@ -1,0 +1,89 @@
+[0.007s] Invoking command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/drawmemaybe/DrawMeMaybe/ros2_ws/src/moveit2/moveit_planners/chomp/chomp_motion_planner -DCMAKE_INSTALL_PREFIX=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner
+[0.027s] -- The C compiler identification is GNU 11.4.0
+[0.048s] -- The CXX compiler identification is GNU 11.4.0
+[0.051s] -- Detecting C compiler ABI info
+[0.079s] -- Detecting C compiler ABI info - done
+[0.082s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.083s] -- Detecting C compile features
+[0.083s] -- Detecting C compile features - done
+[0.084s] -- Detecting CXX compiler ABI info
+[0.117s] -- Detecting CXX compiler ABI info - done
+[0.120s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.120s] -- Detecting CXX compile features
+[0.120s] -- Detecting CXX compile features - done
+[0.121s] -- Found moveit_common: 2.5.9 (/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common/share/moveit_common/cmake)
+[0.122s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.185s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.250s] [0mchomp_motion_planner: You did not request a specific build type: Choosing 'Release' for maximum performance[0m
+[0.250s] -- Found moveit_core: 2.5.9 (/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/share/moveit_core/cmake)
+[0.350s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[0.372s] -- Found parameter_traits: 0.5.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[0.387s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.390s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.393s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.398s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.404s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.422s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.423s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.459s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.469s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.485s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.489s] -- Found Threads: TRUE  
+[0.512s] -- Found rclcpp_lifecycle: 16.0.16 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[0.522s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem 
+[0.563s] -- library: /usr/lib/x86_64-linux-gnu/libcurl.so
+[0.589s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[0.589s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.685s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.690s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.690s] -- Configured cppcheck include dirs: /home/drawmemaybe/DrawMeMaybe/ros2_ws/src/moveit2/moveit_planners/chomp/chomp_motion_planner/include
+[0.690s] -- Configured cppcheck exclude dirs and/or files: 
+[0.690s] -- Added test 'xmllint' to check XML markup files
+[0.691s] -- Configuring done
+[0.700s] -- Generating done
+[0.703s] -- Build files have been written to: /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner
+[0.711s] Invoked command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner' returned '0': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/drawmemaybe/DrawMeMaybe/ros2_ws/src/moveit2/moveit_planners/chomp/chomp_motion_planner -DCMAKE_INSTALL_PREFIX=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner
+[0.712s] Invoking command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner -- -j24 -l24
+[0.733s] [ 33%] [32mBuilding CXX object CMakeFiles/chomp_motion_planner.dir/src/chomp_planner.cpp.o[0m
+[0.733s] [ 33%] [32mBuilding CXX object CMakeFiles/chomp_motion_planner.dir/src/chomp_optimizer.cpp.o[0m
+[0.733s] [ 66%] [32mBuilding CXX object CMakeFiles/chomp_motion_planner.dir/src/chomp_parameters.cpp.o[0m
+[0.733s] [ 66%] [32mBuilding CXX object CMakeFiles/chomp_motion_planner.dir/src/chomp_trajectory.cpp.o[0m
+[0.734s] [ 83%] [32mBuilding CXX object CMakeFiles/chomp_motion_planner.dir/src/chomp_cost.cpp.o[0m
+[10.874s] [100%] [32m[1mLinking CXX shared library libchomp_motion_planner.so[0m
+[10.957s] [100%] Built target chomp_motion_planner
+[10.962s] Invoked command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner' returned '0': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner -- -j24 -l24
+[10.963s] Invoking command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner
+[10.965s] -- Install configuration: "Release"
+[10.965s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/lib/libchomp_motion_planner.so.2.5.9
+[10.966s] -- Set runtime path of "/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/lib/libchomp_motion_planner.so.2.5.9" to ""
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/lib/libchomp_motion_planner.so
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/include
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/include/chomp_motion_planner
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/include/chomp_motion_planner/chomp_planner.h
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/include/chomp_motion_planner/chomp_optimizer.h
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/include/chomp_motion_planner/chomp_parameters.h
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/include/chomp_motion_planner/chomp_utils.h
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/include/chomp_motion_planner/chomp_trajectory.h
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/include/chomp_motion_planner/multivariate_gaussian.h
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/include/chomp_motion_planner/chomp_cost.h
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/environment/library_path.sh
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/environment/library_path.dsv
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/ament_index/resource_index/package_run_dependencies/chomp_motion_planner
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/ament_index/resource_index/parent_prefix_path/chomp_motion_planner
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/environment/ament_prefix_path.sh
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/environment/ament_prefix_path.dsv
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/environment/path.sh
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/environment/path.dsv
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/local_setup.bash
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/local_setup.sh
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/local_setup.zsh
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/local_setup.dsv
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/package.dsv
+[10.966s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/ament_index/resource_index/packages/chomp_motion_planner
+[10.967s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/cmake/chomp_motion_plannerTargetsExport.cmake
+[10.967s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/cmake/chomp_motion_plannerTargetsExport-release.cmake
+[10.967s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/cmake/ament_cmake_export_targets-extras.cmake
+[10.967s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/cmake/chomp_motion_plannerConfig.cmake
+[10.967s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/cmake/chomp_motion_plannerConfig-version.cmake
+[10.967s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/chomp_motion_planner/share/chomp_motion_planner/package.xml
+[10.968s] Invoked command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner' returned '0': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner

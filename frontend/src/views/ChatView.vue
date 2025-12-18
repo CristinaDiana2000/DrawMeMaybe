@@ -63,6 +63,22 @@
           />
         </div>
 
+        <!-- Confirmation buttons -->
+         <div v-if="showConfirmation" class="confirmation-row">
+          <Button label="Yes ✓" @click="confirmHobbies" severity="success" class="confirm-btn" />
+          <Button label="No ✗" @click="declineHobbies" severity="danger" class="confirm-btn" />
+        </div>
+
+        <div v-if="hobbies.length" class="generate-row">
+          <Button 
+            label="Generate Image" 
+            icon="pi pi-image" 
+            @click="generateImage" 
+            :loading="isGenerating"
+            class="generate-button"
+          />
+        </div>
+
         <div v-if="errorMessage" class="error-text">
           {{ errorMessage }}
         </div>
@@ -131,10 +147,12 @@ function buildAssistantResponse(raw) {
   );
 }
 
-const showConfurmation = ref(false);
+const showConfirmation = ref(false);
 const agentResult = ref(null);
 const selectedHobby =ref("");
 const isConfirmed = ref(false);
+const hobbies = ref([]);
+const isGenerating = ref(false);
 
 async function onSend() {
   if (!validate() || isThinking.value) return;
@@ -162,34 +180,50 @@ async function onSend() {
   });*/
 
   try {
-    const response = await fetch("/api/chat", {
+    const response = await fetch("http://localhost:8000/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: text }),
+      body: JSON.stringify({ user_text: text }),
     });
     const data = await response.json();
+    console.log("API data:", data);
+
+  if (!response.ok || !data.success) {
+    // Explicitly handle backend error
+    errorMessage.value = data.error || "Backend returned an error.";
+    return;
+  }
+
+   // SUCCESS → no error message
+    errorMessage.value = "";
 
     if(data.success) {
       agentResult.value = data;
+      hobbies.value = data.hobbies;
       const hobbies = data.hobbies.join(", ");
 
       messages.value.push({
         role: "assistant",
         content: `I understood your hobbies as: <strong>${hobbies}</strong> — that sounds like great material for a caricature. Is this correct?`
       });
-      showConfurmation.value = true;
+      showConfirmation.value = true;
     }
   } catch (error) {
-    errorMessage.value = "An error occurred while processing your request. Please try again.";
+    console.error("Frontend error:", error);
+    errorMessage.value = "A frontend error occurred. Check the console.";
   } finally {
     isThinking.value = false;
   }
 
-  //personalised hobby response after confirmation
+  
+
+}
+
+//personalised hobby response after confirmation
   async function confirmHobbies() {
-    showConfurmation.value = false;
+    showConfirmation.value = false;
 
     //pick a random hobby from the list
     const hobbies = agentResult.value.hobbies;
@@ -232,17 +266,33 @@ async function onSend() {
 
     isConfirmed.value = true;
     await triggerCaricatureGeneration();
+
   }
 
   function declineHobbies() {
-  showConfirmation.value = false;
-  messages.value.push({
+    showConfirmation.value = false;
+    messages.value.push({
     role: "assistant",
     content: "No problem! Please tell me more about your hobbies or interests."
-  });
+    });
+
+    }
+
+async function triggerCaricatureGeneration() {
+  isGenerating.value = true;  // ADD: isGenerating ref
+  try {
+    await fetch('/api/generate-image', { method: 'POST' });
+    messages.value.push({
+      role: "assistant",
+      content: "Image generating - DONE! Check output folder!!"
+    });
+  } catch (error) {
+    console.error('Error:', error);
+  }
+  isGenerating.value = false;
 }
 
-}
+
 </script>
 
 <style scoped>

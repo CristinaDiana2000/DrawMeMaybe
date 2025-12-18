@@ -1,0 +1,16 @@
+{
+  "title": "The Climbing Caricature",
+  "caricature_prompt": "Create a playful, exaggerated caricature of someone who loves climbing, coding and cooking. Exaggerate the features dramatically - mouth, hands, eyes. Use clean line art and bold contours for minimal detail, suitable for robotic arm drawing. Style hints: bold lines and colors, bright shades to add energy. Show a person with a backpack full of climbing gear and coding books.",
+  "caption": "A caricature inspired by your interests in climbing, coding, cooking, with exaggerated mouth, hands, eyes.",
+  "hobbies": [
+    "climbing",
+    "coding",
+    "cooking"
+  ],
+  "exaggerations": [
+    "mouth",
+    "hands",
+    "eyes"
+  ],
+  "generation_time_ms": 1880.5725574493408
+}

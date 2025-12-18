@@ -6,9 +6,18 @@ import torch
 from diffusers import StableDiffusionImg2ImgPipeline
 from PIL import Image
 
-AGENT_JSON = "sd_pipeline/agent_output.json"
-IMAGE_PATH = "sd_pipeline/assets/whiteguy2.png"
-OUT_IMAGE = "src/assets/caricature_result.png"
+#AGENT_JSON = "backend/ai_image/sd_pipeline/agent_output.json"
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+
+
+AGENT_JSON = PROJECT_ROOT / "backend" / "ai_image" / "sd_pipeline" / "agent_output.json"
+IMAGE_PATH = PROJECT_ROOT / "backend" / "ai_image" / "sd_pipeline" / "assets" / "whiteguy2.png"
+OUT_IMAGE = PROJECT_ROOT / "backend" / "ai_image" / "sd_pipeline" / "assets" / "caricature_result.png"
+
+print("SCRIPT PATH:", Path(__file__).resolve())
+print("PROJECT_ROOT:", PROJECT_ROOT)
+print("AGENT_JSON PATH:", AGENT_JSON)
+print("AGENT_JSON EXISTS?", AGENT_JSON.exists())
 
 def main():
     device = "cuda" if torch.cuda.is_available() else "cpu"

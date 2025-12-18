@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-PROJECT_DIR="/home/drawmemaybe/drawmemaybe/DrawMeMaybe"
+PROJECT_DIR="/home/drawmemaybe/drawmemaybe/DrawMeMaybe/backend"
 cd "$PROJECT_DIR"
 echo "PWD NOW: $(pwd)"
 

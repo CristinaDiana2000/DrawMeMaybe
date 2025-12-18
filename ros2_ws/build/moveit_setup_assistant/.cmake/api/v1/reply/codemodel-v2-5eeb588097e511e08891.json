@@ -1,0 +1,106 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-311da9e0e6408e406979.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "moveit_setup_assistant",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "moveit_setup_assistant::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-moveit_setup_assistant-Release-ea71c47dabc7871ccbb5.json",
+					"name" : "moveit_setup_assistant",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "moveit_setup_assistant_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-moveit_setup_assistant_autogen-Release-9773f3e794e7142963e6.json",
+					"name" : "moveit_setup_assistant_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "moveit_setup_assistant_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-moveit_setup_assistant_uninstall-Release-c2798b9fa3fee3514252.json",
+					"name" : "moveit_setup_assistant_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "moveit_setup_assistant_updater::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-moveit_setup_assistant_updater-Release-580224e445ccb1578796.json",
+					"name" : "moveit_setup_assistant_updater",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "moveit_setup_assistant_updater_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-moveit_setup_assistant_updater_autogen-Release-55729da16463f412b8cf.json",
+					"name" : "moveit_setup_assistant_updater_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-9193346ccc61e9408816.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_setup_assistant",
+		"source" : "/home/drawmemaybe/DrawMeMaybe/ros2_ws/src/moveit2/moveit_setup_assistant/moveit_setup_assistant"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

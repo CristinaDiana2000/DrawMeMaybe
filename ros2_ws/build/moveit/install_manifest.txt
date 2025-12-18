@@ -1,0 +1,15 @@
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/ament_index/resource_index/package_run_dependencies/moveit
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/ament_index/resource_index/parent_prefix_path/moveit
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/environment/ament_prefix_path.sh
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/environment/ament_prefix_path.dsv
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/environment/path.sh
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/environment/path.dsv
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/local_setup.bash
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/local_setup.sh
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/local_setup.zsh
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/local_setup.dsv
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/package.dsv
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/ament_index/resource_index/packages/moveit
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/cmake/moveitConfig.cmake
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/cmake/moveitConfig-version.cmake
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit/share/moveit/package.xml

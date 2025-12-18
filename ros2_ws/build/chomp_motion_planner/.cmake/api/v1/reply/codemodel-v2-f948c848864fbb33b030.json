@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-fe2274c3d106eb99a660.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "chomp_motion_planner",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "chomp_motion_planner::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chomp_motion_planner-Release-70c6457a350b712466ec.json",
+					"name" : "chomp_motion_planner",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "chomp_motion_planner_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chomp_motion_planner_uninstall-Release-62c6bfc071c0519607f2.json",
+					"name" : "chomp_motion_planner_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-ee8d6e8da5dee25deedf.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/chomp_motion_planner",
+		"source" : "/home/drawmemaybe/DrawMeMaybe/ros2_ws/src/moveit2/moveit_planners/chomp/chomp_motion_planner"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

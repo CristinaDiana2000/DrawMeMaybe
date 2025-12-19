@@ -82,8 +82,6 @@ def debug_sessions():
         "sessions": sessions,
         "consents": consents,
     }
-<<<<<<< HEAD
-=======
 
 @app.post("/api/chat")
 async def chat(request: ChatRequest):
@@ -107,4 +105,3 @@ async def chat(request: ChatRequest):
         }
     except Exception as e:
         return {"success": False, "error": str(e)}
->>>>>>> e9d763e57 (changed chat structure so that it work with ai)

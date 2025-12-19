@@ -5,15 +5,14 @@ import ConsentView from "../views/ConsentView.vue";
 import CameraView from "../views/CameraView.vue";
 import ChatView from "../views/ChatView.vue";
 import AboutView from "../views/AboutView.vue";
-import StatusView from "../views/StatusView.vue";
+
 
 const routes = [
   { path: "/", name: "screensaver", component: ScreensaverView },
   { path: "/consent", name: "consent", component: ConsentView },
   { path: "/camera", name: "camera", component: CameraView },
   { path: "/chat", name: "chat", component: ChatView },
-  { path: "/about", name: "about", component: AboutView},
-  { path: '/status', name: 'status', component: StatusView }
+  { path: "/about", name: "about", component: AboutView }
 ];
 
 const router = createRouter({

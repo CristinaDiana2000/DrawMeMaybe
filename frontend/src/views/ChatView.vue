@@ -45,7 +45,7 @@
         </div>
 
         <!-- Input row -->
-        <div class="chat-input-row">
+        <div v-if="!isConfirmed" class="chat-input-row">
           <InputText
             v-model="userText"
             type="text"
@@ -63,21 +63,41 @@
           />
         </div>
 
+        
+        <!-- Status bar shown after confirmation -->
+        <div v-if="isConfirmed" class="stepper">
+          <div class="stepper-line"></div>
+
+          <div
+            v-for="(step, index) in steps"
+            :key="step.id"
+            class="stepper-step"
+          >
+            <div
+              class="stepper-circle"
+              :class="{
+                'stepper-circle--done': index + 1 < currentStep,
+                'stepper-circle--active': index + 1 === currentStep
+              }"
+            >
+              <span class="stepper-index">{{ index + 1 }}</span>
+            </div>
+            <div class="stepper-label">
+              {{ step.title }}
+            </div>
+          </div>
+        </div>
+
+
+
+
         <!-- Confirmation buttons -->
          <div v-if="showConfirmation" class="confirmation-row">
           <Button label="Yes ✓" @click="confirmHobbies" severity="success" class="confirm-btn" />
           <Button label="No ✗" @click="declineHobbies" severity="danger" class="confirm-btn" />
         </div>
 
-        <div v-if="hobbies.length" class="generate-row">
-          <Button 
-            label="Generate Image" 
-            icon="pi pi-image" 
-            @click="generateImage" 
-            :loading="isGenerating"
-            class="generate-button"
-          />
-        </div>
+      
 
         <div v-if="errorMessage" class="error-text">
           {{ errorMessage }}
@@ -154,6 +174,19 @@ const isConfirmed = ref(false);
 const hobbies = ref([]);
 const isGenerating = ref(false);
 
+const currentStep = ref(0);
+const steps = [
+  /* id: 1, icon: 'pi pi-user',   title: 'Understanding you',  subtitle: 'Locking in your hobbies…' },
+  { id: 2, icon: 'pi pi-pencil', title: 'Designing scene',    subtitle: 'Sketching a fun scenario…' },
+  { id: 3, icon: 'pi pi-cog',    title: 'Generating image',   subtitle: 'Running the AI on your photo…' },
+  { id: 4, icon: 'pi pi-check',  title: 'Caricature ready',   subtitle: 'Everything is finished!' }*/
+
+  { id: 1, title: 'Understanding you' },
+  { id: 2, title: 'Creating a prompt' },
+  { id: 3, title: 'Creating a caricature' },
+  { id: 4, title: 'Drawing the caricature' }
+];
+
 async function onSend() {
   if (!validate() || isThinking.value) return;
 
@@ -201,12 +234,14 @@ async function onSend() {
 
     if(data.success) {
       agentResult.value = data;
-      hobbies.value = data.hobbies;
-      const hobbies = data.hobbies.join(", ");
+      hobbies.value = data.hobbies || [];
+      //const hobbies = data.hobbies.join(", ");
+      const hobbiesText = (Array.isArray(hobbies.value) ? hobbies.value : [])
+    .join(", ");
 
       messages.value.push({
         role: "assistant",
-        content: `I understood your hobbies as: <strong>${hobbies}</strong> — that sounds like great material for a caricature. Is this correct?`
+        content: `I understood your hobbies as: <strong>${hobbiesText}</strong> — that sounds like great material for a caricature. Is this correct?`
       });
       showConfirmation.value = true;
     }
@@ -259,12 +294,13 @@ async function onSend() {
       role: "assistant",
       content: `${compliment}<br>
       We'll portray you as our <strong>${selectedHobby.value} expert</strong>.<br><br>
-       <strong>Scene:</strong> ${scene}<br>
+       <strong><br>
       <em>Generating your caricature now...</em>
     `
     });
 
     isConfirmed.value = true;
+    currentStep.value = 1;
     await triggerCaricatureGeneration();
 
   }
@@ -281,11 +317,14 @@ async function onSend() {
 async function triggerCaricatureGeneration() {
   isGenerating.value = true;  // ADD: isGenerating ref
   try {
+    currentStep.value = 2; //Creating a prompt
     await fetch('/api/generate-image', { method: 'POST' });
-    messages.value.push({
+    currentStep.value = 3; //Creating a caricature
+    currentStep.value = 4; //Drawing the caricature
+    /*messages.value.push({
       role: "assistant",
       content: "Image generating - DONE! Check output folder!!"
-    });
+    });*/
   } catch (error) {
     console.error('Error:', error);
   }
@@ -477,4 +516,72 @@ async function triggerCaricatureGeneration() {
   color: #d33;
   font-size: 0.88rem;
 }
+
+.stepper {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 1rem 0.5rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stepper-line {
+  position: absolute;
+  top: 1.5rem;              /* aligns with circle centers */
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;              /* thin line */
+  background: #e5e7eb;      /* light grey base */
+  z-index: 0;
+}
+
+.stepper-step {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stepper-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid #e5e7eb;   /* default outline */
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+/* Beige color for done + active */
+.stepper-circle--done,
+.stepper-circle--active {
+  background: #fde68a;         /* your beige tone */
+  border-color: #f59e0b;
+  color: #111827;
+}
+
+.stepper-circle--active {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+}
+
+.stepper-index {
+  font-weight: 600;
+}
+
+.stepper-label {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #4b5563;
+  max-width: 120px;
+}
+
+
 </style>

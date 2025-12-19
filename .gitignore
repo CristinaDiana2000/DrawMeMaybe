@@ -16,14 +16,3 @@ LoRAs/
 __pycache__/
 venv/
 get-pip.py 
-ve.venv/
-venv/
-__pycache__/
-.venv
-node_modules/
-
-LoRAs/
-.vscode/
-pycache/
-*.pyc
-__pycache__/

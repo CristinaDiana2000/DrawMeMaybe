@@ -1,12 +1,8 @@
-import json
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from pathlib import Path
-from PIL import Image
-from backend.ai_image.agent.caricature_agent import run_caricature_agent
-#from .tinydb.db import create_session, save_consent, list_sessions, list_consents, complete_session
+from .tinydb.db import create_session, save_consent, list_sessions, list_consents, complete_session
 
 app = FastAPI()
 
@@ -33,9 +29,6 @@ class ConsentPayload(BaseModel):
 
 class SessionCompletePayload(BaseModel):
     session_id: str
-
-class ChatRequest(BaseModel):
-    user_text: str
 
 
 @app.get("/health")
@@ -82,26 +75,3 @@ def debug_sessions():
         "sessions": sessions,
         "consents": consents,
     }
-
-@app.post("/api/chat")
-async def chat(request: ChatRequest):
-    try:
-        # Same logic as run_agent_only.py
-        PROJECT_ROOT = Path(__file__).resolve().parent.parent  # backend → DrawMeMaybe
-        IMAGE_PATH = PROJECT_ROOT / "backend" / "ai_image" / "sd_pipeline" / "assets" / "whiteguy2.png"
-        
-        image = Image.open(IMAGE_PATH).convert("RGB").resize((512, 512))
-        result = run_caricature_agent(image, request.user_text)
-        json_path = PROJECT_ROOT / "backend" / "ai_image" / "sd_pipeline" / "agent_output.json"
-        with open(json_path, "w") as f:
-            json.dump(result, f, indent=2)
-
-        
-        return {
-            "success": True,
-            "hobbies": result.get("hobbies", []),
-            "prompt": result.get("prompt", ""),
-            "exaggerations": result.get("exaggerations", [])
-        }
-    except Exception as e:
-        return {"success": False, "error": str(e)}

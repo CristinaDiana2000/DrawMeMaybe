@@ -309,11 +309,32 @@ async function onSend() {
   }
 
   function declineHobbies() {
+    console.log("User declined hobbies.");
+
     showConfirmation.value = false;
-    messages.value.push({
+    isConfirmed.value = false;
+    currentStep.value = 0;
+    agentResult.value = null;
+    hobbies.value = [];
+    selectedHobby.value = "";
+
+    /*messages.value({
     role: "assistant",
     content: "No problem! Please tell me more about your hobbies or interests."
-    });
+    });*/
+     messages.value = [
+    {
+      role: "assistant",
+      content:
+        "Hi! I'm here to help with your caricature. Tell me one hobby, interest, or fun fact about yourself.",
+    },
+  ];
+
+    //clears input field and error message
+    userText.value = "";
+    errorMessage.value = "";
+
+    console.log('messages after reset', messages.value);
 
     }
 
@@ -353,11 +374,21 @@ async function triggerCaricatureGeneration() {
   height: 480px;
   /*padding-bottom: 1rem*/;
 }
+:deep(.p-card-body) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+:deep(.p-card-content) {
+  flex: 1;
+  display: flex;
+}
 
 .chat-body {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  width: 100%;
 }
 
 .title-row {
@@ -378,8 +409,8 @@ async function triggerCaricatureGeneration() {
   min-height: 260px;
   overflow-y: auto;
   padding: 0.75rem 0.5rem 0.75rem 0;
-  padding-bottom: 1rem;
-  margin-bottom: 0.75rem;
+  padding-bottom: 0.10rem;
+  margin-bottom: 0.25rem;
 }
 
 /* One row per message */
@@ -539,6 +570,7 @@ async function triggerCaricatureGeneration() {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-shrink: 0;
 }
 
 .stepper-line {

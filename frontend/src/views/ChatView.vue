@@ -16,98 +16,96 @@
       </template>
 
       <!-- Chat area -->
-      <template #content>
-        <div class="chat-scroll">
-          <div
-            v-for="(msg, idx) in messages"
-            :key="idx"
-            class="chat-row"
-            :class="msg.role === 'assistant' ? 'chat-left' : 'chat-right'"
-          >
-            <!-- Assistant left -->
-            <template v-if="msg.role === 'assistant'">
-              <img :src="AI_ICON" alt="Assistant" class="avatar avatar-ai" />
-              <div class="bubble bubble-assistant">
-                <span v-html="msg.content"></span>
-              </div>
-            </template>
-
-            <!-- User right -->
-            <template v-else>
-              <div class="user-wrapper">
-                <div class="bubble bubble-user">
-                  <span v-html="msg.content"></span>
-                </div>
-                <Avatar
-                  icon="pi pi-user"
-                  shape="circle"
-                  class="avatar-user"
-                />
-              </div>
-            </template>
+      <!-- Chat area -->
+<template #content>
+  <div class="chat-body">
+    <!-- 1) Scrollable messages -->
+    <div class="chat-scroll">
+      <div
+        v-for="(msg, idx) in messages"
+        :key="idx"
+        class="chat-row"
+        :class="msg.role === 'assistant' ? 'chat-left' : 'chat-right'"
+      >
+        <!-- Assistant left -->
+        <template v-if="msg.role === 'assistant'">
+          <img :src="AI_ICON" alt="Assistant" class="avatar avatar-ai" />
+          <div class="bubble bubble-assistant">
+            <span v-html="msg.content"></span>
           </div>
-        </div>
+        </template>
 
-        <!-- Input row -->
-        <div v-if="!isConfirmed" class="chat-input-row">
-          <InputText
-            v-model="userText"
-            type="text"
-            class="chat-input"
-            placeholder="Tell me about your hobbies or interests…"
-            @keyup.enter="onSend"
-            :disabled="isThinking || hasUserSent"
-          />
-          <Button
-            type="button"
-            label="Send"
-            icon="pi pi-send"
-            class="send-button"
-            @click="onSend"
-            :disabled="isThinking || hasUserSent"
-          />
-        </div>
-
-        
-        <!-- Status bar shown after confirmation -->
-        <div v-if="isConfirmed" class="stepper">
-          <div class="stepper-line"></div>
-
-          <div
-            v-for="(step, index) in steps"
-            :key="step.id"
-            class="stepper-step"
-          >
-            <div
-              class="stepper-circle"
-              :class="{
-                'stepper-circle--done': index + 1 < currentStep,
-                'stepper-circle--active': index + 1 === currentStep
-              }"
-            >
-              <span class="stepper-index">{{ index + 1 }}</span>
-            </div>
-            <div class="stepper-label">
-              {{ step.title }}
-            </div>
+        <!-- User right -->
+        <template v-else>
+          <div class="user-wrapper"></div>
+          <div class="bubble bubble-user">
+            <span v-html="msg.content"></span>
           </div>
+          <Avatar icon="pi pi-user" class="avatar-user" />
+        </template>
+      </div>
+    </div>
+
+    <!-- 2) Fixed input row (before confirmation) -->
+    <div v-if="!isConfirmed" class="chat-input-row">
+      <InputText
+        v-model="userText"
+        type="text"
+        class="chat-input"
+        placeholder="Tell me about your hobbies or interests…"
+        @keyup.enter="onSend"
+      />
+      <Button
+        type="button"
+        label="Send"
+        icon="pi pi-send"
+        class="send-button"
+        @click="onSend"
+        :disabled="isThinking"
+      />
+    </div>
+
+    <!-- 3a) Confirmation buttons (before confirmation) -->
+    <div v-if="showConfirmation && !isConfirmed" class="confirmation-row">
+      <Button label="Yes ✓" @click="confirmHobbies" severity="success" class="confirm-btn" />
+      <Button label="No ✗" @click="declineHobbies" severity="danger" class="confirm-btn" />
+    </div>
+
+    <!-- 3b) Stepper after confirmation -->
+    <div
+      v-if="isConfirmed"
+      class="stepper"
+      :class="{ 'stepper--done': currentStep === steps.length }"
+    >
+      <div class="stepper-line"></div>
+
+      <div
+        v-for="(step, index) in steps"
+        :key="step.id"
+        class="stepper-step"
+      >
+        <div
+          class="stepper-circle"
+          :class="{
+            'stepper-circle--done': index + 1 < currentStep,
+            'stepper-circle--active': index + 1 === currentStep
+          }"
+        >
+          <span class="stepper-index">{{ index + 1 }}</span>
         </div>
-
-
-
-
-        <!-- Confirmation buttons -->
-         <div v-if="showConfirmation" class="confirmation-row">
-          <Button label="Yes ✓" @click="confirmHobbies" severity="success" class="confirm-btn" />
-          <Button label="No ✗" @click="declineHobbies" severity="danger" class="confirm-btn" />
+        <div class="stepper-label">
+          {{ step.title }}
         </div>
+      </div>
+    </div>
 
-      
+    <!-- Error -->
+    <div v-if="errorMessage" class="error-text">
+      {{ errorMessage }}
+    </div>
+  </div>
+</template>
 
-        <div v-if="errorMessage" class="error-text">
-          {{ errorMessage }}
-        </div>
-      </template>
     </Card>
   </div>
 </template>
@@ -301,10 +299,10 @@ async function onSend() {
     const scene = scenes[selectedHobby.value] || 'doing something awesome with $/selectedHoby.value}!';
     messages.value.push({
       role: "assistant",
-      content: `${compliment}<br>
-      We'll portray you as our <strong>${selectedHobby.value} expert</strong>.<br><br>
-       <strong><br>
-      <em>Generating your caricature now...</em>
+      content: `${compliment}
+      We'll portray you as our <strong>${selectedHobby.value} expert</strong>.
+       <strong>
+      
     `
     });
 
@@ -329,7 +327,7 @@ async function triggerCaricatureGeneration() {
     currentStep.value = 2; //Creating a prompt
     await fetch('/api/generate-image', { method: 'POST' });
     currentStep.value = 3; //Creating a caricature
-    currentStep.value = 4; //Drawing the caricature
+    //currentStep.value = 4; //Drawing the caricature
     /*messages.value.push({
       role: "assistant",
       content: "Image generating - DONE! Check output folder!!"
@@ -356,6 +354,14 @@ async function triggerCaricatureGeneration() {
   flex-direction: column;
   width: 100%;
   max-width: 900px;
+  height: 480px;
+  /*padding-bottom: 1rem*/;
+}
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .title-row {
@@ -372,9 +378,11 @@ async function triggerCaricatureGeneration() {
 /* Scrollable chat area */
 .chat-scroll {
   flex: 1;
-  max-height: 50vh;
+  /*max-height: 50vh;*/
+  min-height: 260px;
   overflow-y: auto;
-  padding-right: 0.5rem;
+  padding: 0.75rem 0.5rem 0.75rem 0;
+  padding-bottom: 1rem;
   margin-bottom: 0.75rem;
 }
 
@@ -451,6 +459,7 @@ async function triggerCaricatureGeneration() {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 /* Confirmation buttons */
@@ -459,11 +468,11 @@ async function triggerCaricatureGeneration() {
   gap: 1rem;
   justify-content: center;
   margin-top: 1.5rem;
-  padding: 1.25rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  background: transparent;
+  /*border-radius: 16px;*/
+  border: none;
+  box-shadow: none;
 }
 
 .confirm-btn {
@@ -524,7 +533,8 @@ async function triggerCaricatureGeneration() {
 
 .stepper {
   position: relative;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
   padding: 1rem 0.5rem 0.5rem;
   display: flex;
   justify-content: space-between;
@@ -533,12 +543,33 @@ async function triggerCaricatureGeneration() {
 
 .stepper-line {
   position: absolute;
-  top: 1.5rem;              /* aligns with circle centers */
-  left: 1.5rem;
-  right: 1.5rem;
-  height: 2px;              /* thin line */
-  background: #e5e7eb;      /* light grey base */
+  top: 1.9rem;              /* aligns with circle centers */
+  left: 2rem;
+  right: 2rem;
+  height: 3px;              /* thin line */
+  /*background: #e5e7eb;   */   /* light grey base */
+  background: linear-gradient(
+    90deg,
+    #e5e7eb 0%,
+    #f59e0b 40%,
+    #fde68a 60%,
+    #e5e7eb 100%
+  );
+  background-size: 200% 100%;
+  animation: stepper-signal 1.4s linear infinite;
   z-index: 0;
+}
+
+
+@keyframes stepper-signal {
+  0%   { background-position: 200% 0; }
+  100% { background-position: 0 0; }
+}
+
+
+.stepper--done .stepper-line {
+  animation: none;
+  background: #f59e0b;
 }
 
 .stepper-step {
@@ -555,7 +586,7 @@ async function triggerCaricatureGeneration() {
   height: 34px;
   border-radius: 50%;
   border: 3px solid #e5e7eb;   /* default outline */
-  background: transparent;
+  background: #f9fafb;
   display: flex;
   align-items: center;
   justify-content: center;

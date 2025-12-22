@@ -3,7 +3,8 @@ import numpy as np
 from PIL import Image
 import torch
 from diffusers import StableDiffusionXLInpaintPipeline
-import mediapipe as mp  #GAB HIER PROBLEME
+from diffusers import StableDiffusionXLImg2ImgPipeline
+#import mediapipe as mp  #GAB HIER PROBLEME
 
 # -----------------------------
 # 1. Originalbild laden
@@ -47,7 +48,7 @@ pipe = StableDiffusionXLInpaintPipeline.from_pretrained(
     use_safetensors=True
 )
 pipe.load_lora_weights("LoRAs/Urabewe_Caricature.safetensors")
-
+#https://civitai.green/models/1506597/urabewe-caricature?
 pipe.safety_checker = None
 pipe.enable_attention_slicing()
 pipe.enable_sequential_cpu_offload()
@@ -63,7 +64,7 @@ mask_img = Image.open("src/assets/face_mask.png").convert("L").resize((384,384))
 # -----------------------------
 prompt = (
     "caricature of the person in the masked area, keep facial likeness, "
-    "exaggerated eyes, big nose, wide mouth, funny expression, humorous, stylized, colorful sketch"
+    "exaggerated eyes, big nose, wide mouth, funny expression, humorous, stylized"
 )
 
 # -----------------------------
@@ -82,106 +83,171 @@ result = pipe(
 # 8. OUTPUT
 # -----------------------------
 result.save("src/assets/caricature_inpaint.png")
-print("Fertig!")
+print("Fertig mit caricature")
 
 
 
+##########2. Durchlauf
 
+init_img = Image.open("src/assets/caricature_inpaint.png").convert("RGB").resize((384,384))
+img_np = np.array(init_img)
 
-# -------------------------------------------------------------- HOBBYMASKE GENERIEREN
+# -----------------------------
+# 2. Maske erstellen (nur Hände/Objektbereich = weiß)
+# -----------------------------
+mask = np.zeros((img_np.shape[0], img_np.shape[1]), dtype=np.uint8)
 
-img = cv2.imread("src/assets/caricature_inpaint.png")
-h, w = img.shape[:2]
+# Hier z.B. Bereich unten mittig (Hände)
+h, w = mask.shape
+mask[int(h*0.65):int(h*0.95), int(w*0.35):int(w*0.65)] = 255
 
-# -----------------------------------
-# 2. Selfie-Segmentation (Personenmaske)
-# -----------------------------------
-mp_selfie = mp.solutions.selfie_segmentation.SelfieSegmentation(model_selection=1)
-results = mp_selfie.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-
-# results.segmentation_mask = Werte 0..1
-segmask = results.segmentation_mask
-segmask = (segmask * 255).astype(np.uint8)
-
-# -----------------------------------
-# 3. Hobby-Maske generieren:
-#    Wir nehmen unteren Körperbereich als "weiß"
-# -----------------------------------
-mask = np.zeros((h, w), dtype=np.uint8)
-
-# Bereich unter dem Gesicht (ungefähr Mitte nach unten)
-# Du kannst das anpassen
-mask[int(h*0.45):int(h*0.95), :] = 255
-
-# Segmentierung UND Bereich kombinieren:
-mask = cv2.bitwise_and(mask, segmask)
-
-# Leicht weichzeichnen für natürlicheren Übergang
-mask = cv2.GaussianBlur(mask, (25,25), 0)
-
-# -----------------------------------
-# 4. Maske speichern
-# -----------------------------------
+mask = cv2.GaussianBlur(mask, (7,7), 0)
 mask_pil = Image.fromarray(mask)
 mask_pil.save("src/assets/hobby_mask.png")
 
-print("Hobby-Maske gespeichert unter src/assets/hobby_mask.png")
-
-
-
-
-
-# -------------------------------------------------------------- ZWEITE INPAINTING-RUN FÜR HOBBY
-
 # -----------------------------
-# 1. Vorheriges Ergebnis laden
+# 3. Pipeline laden
 # -----------------------------
-first_result = Image.open("src/assets/caricature_inpaint.png").convert("RGB")
-
-# -----------------------------
-# 2. Neue Maske für Hobby erstellen
-# -----------------------------
-# Weiß = Bereich, der ersetzt wird (z.B. Hände/Platz für Objekt)
-# Schwarz = bleibt unverändert
-hobby_mask = Image.open("src/assets/hobby_mask.png").convert("L").resize(first_result.size)
-
-# -----------------------------
-# 3. Prompt für Hobby
-# -----------------------------
-hobby_prompt = (
-    "caricature of the person in the masked area, keep facial likeness, "
-    "exaggerated features, humorous, stylized, gaming headset on the head"
+pipe = StableDiffusionXLInpaintPipeline.from_pretrained(
+    "stabilityai/stable-diffusion-xl-base-1.0",
+    torch_dtype=torch.float16,
+    use_safetensors=True
 )
-
+pipe.load_lora_weights("LoRAs/Urabewe_Caricature.safetensors")
+pipe.safety_checker = None
+pipe.enable_attention_slicing()
+pipe.enable_sequential_cpu_offload()
 
 # -----------------------------
-# 4. Zweite Generierung
+# 4. Prompt Hobby
 # -----------------------------
-second_result = pipe(
-    prompt=hobby_prompt,
-    image=first_result,
-    mask_image=hobby_mask,
-    strength=0.7,          # Effekt nur auf Maskenbereich
+prompt = (
+    "a small acoustic guitar held naturally in the person's hands, "
+    "stylized, readable, only change the hands area"
+)
+negative_prompt = "altered face, deformed head, extra faces, merged objects"
+
+generator = torch.Generator("cuda").manual_seed(42)
+
+# -----------------------------
+# 5. Generation
+# -----------------------------
+result = pipe(
+    prompt=prompt,
+    negative_prompt=negative_prompt,
+    image=init_img,
+    mask_image=mask_pil,
+    strength=0.7,  # etwas stärker, da nur Hände geändert werden
     num_inference_steps=25,
-    guidance_scale=4.5
+    guidance_scale=5.0,
+    generator=generator
 ).images[0]
 
 # -----------------------------
-# 5. Ergebnis speichern
+# 6. Speichern
 # -----------------------------
-second_result.save("src/assets/caricature_with_hobby.png")
-print("Fertig! Ergebnis mit Hobby gespeichert.")
+result.save("src/assets/caricature_with_hobby.png")
+print("Fertig! Hobby in Hände eingefügt.")
 
 
 
 
 
 
-# import torch
-# from diffusers import StableDiffusionImg2ImgPipeline
-# from PIL import Image
-# import random
-# from huggingface_hub import hf_hub_download
+# # -------------------------------------------------------------- HOBBYMASKE GENERIEREN
+
+# img = cv2.imread("src/assets/caricature_inpaint.png")
+# h, w = img.shape[:2]
+
+# # -----------------------------------
+# # 2. Selfie-Segmentation (Personenmaske)
+# # -----------------------------------
+# mp_selfie = mp.solutions.selfie_segmentation.SelfieSegmentation(model_selection=1)
+# results = mp_selfie.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+
+# # results.segmentation_mask = Werte 0..1
+# segmask = results.segmentation_mask
+# segmask = (segmask * 255).astype(np.uint8)
+
+# # -----------------------------------
+# # 3. Hobby-Maske generieren:
+# #    Wir nehmen unteren Körperbereich als "weiß"
+# # -----------------------------------
+# mask = np.zeros((h, w), dtype=np.uint8)
+
+# # Bereich unter dem Gesicht (ungefähr Mitte nach unten)
+# # Du kannst das anpassen
+# mask[int(h*0.45):int(h*0.95), :] = 255
+
+# # Segmentierung UND Bereich kombinieren:
+# mask = cv2.bitwise_and(mask, segmask)
+
+# # Leicht weichzeichnen für natürlicheren Übergang
+# mask = cv2.GaussianBlur(mask, (25,25), 0)
+
+# # -----------------------------------
+# # 4. Maske speichern
+# # -----------------------------------
+# mask_pil = Image.fromarray(mask)
+# mask_pil.save("src/assets/hobby_mask.png")
+
+# print("Hobby-Maske gespeichert unter src/assets/hobby_mask.png")
+
+
+
+
+
+# # -------------------------------------------------------------- ZWEITE INPAINTING-RUN FÜR HOBBY
+
+# # -----------------------------
+# # 1. Vorheriges Ergebnis laden
+# # -----------------------------
+# first_result = Image.open("src/assets/caricature_inpaint.png").convert("RGB")
+
+# # -----------------------------
+# # 2. Neue Maske für Hobby erstellen
+# # -----------------------------
+# # Weiß = Bereich, der ersetzt wird (z.B. Hände/Platz für Objekt)
+# # Schwarz = bleibt unverändert
+# hobby_mask = Image.open("src/assets/hobby_mask.png").convert("L").resize(first_result.size)
+
+# # -----------------------------
+# # 3. Prompt für Hobby
+# # -----------------------------
+# hobby_prompt = (
+#     "caricature of the person in the masked area, keep facial likeness, "
+#     "exaggerated features, humorous, stylized, gaming headset on the head"
+# )
+
+
+# # -----------------------------
+# # 4. Zweite Generierung
+# # -----------------------------
+# second_result = pipe(
+#     prompt=hobby_prompt,
+#     image=first_result,
+#     mask_image=hobby_mask,
+#     strength=0.7,          # Effekt nur auf Maskenbereich
+#     num_inference_steps=25,
+#     guidance_scale=4.5
+# ).images[0]
+
+# # -----------------------------
+# # 5. Ergebnis speichern
+# # -----------------------------
+# second_result.save("src/assets/caricature_with_hobby.png")
+# print("Fertig! Ergebnis mit Hobby gespeichert.")
+
+
+
+
+
+
+# # import torch
+# # from diffusers import StableDiffusionImg2ImgPipeline
+# # from PIL import Image
+# # import random
+# # from huggingface_hub import hf_hub_download
 
 # # LoRA-Datei herunterladen
 # #path = hf_hub_download(

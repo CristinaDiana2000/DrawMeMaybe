@@ -10,20 +10,12 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 from rclpy.action import ActionClient
 
 from control_msgs.action import FollowJointTrajectory
-from trajectory_msgs.msg import JointTrajectory
 
 
 class RobotState(Enum):
     INIT = 0
     MOVE_HOME = 1
-    MOVE_P2 = 2
-    MOVE_P3 = 3
-    MOVE_P4 = 4
-    MOVE_P5 = 5
-    MOVE_P6 = 6
-    MOVE_P7 = 7
-    MOVE_P8 = 8
-    DONE = 9
+    DONE = 2
 
 class Move_To_Home(Node):
     def __init__(self):

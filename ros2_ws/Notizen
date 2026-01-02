@@ -1,0 +1,67 @@
+Hardware von Ur5e simulieren:
+roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=<sim_ip> use_fake_hardware:=true
+
+Um eine Linie zeichen zu lassen muss man eine Node schreiben.
+Dies muss wie folgt aufgerufen werden
+ros2 launch ur_simulation_gazebo ur5e.launch.py
+
+ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5e robot_ip:=192.168.x.x
+
+ros2 launch ur_moveit_config ur5e_moveit.launch.py
+
+Netwerk neu Starten
+sudo systemctl restart NetworkManager
+
+ROS2
+
+-Verbindung starten-
+source /opt/ros/humble/setup.bash -> lädt die Umbebungsvariablen für Ros2 ins terminal
+
+ros2 launch ur_robot_driver ur_control.launch.py \
+  ur_type:=ur5e \
+  robot_ip:=192.168.1.7 \
+  initial_trajectory_controller:=scaled_joint_trajectory_controller \
+  launch_rviz:=false \
+  headless_mode:=false
+-> Verbindung aufbauen mit dem Roboter
+
+ros2 launch: Ros2-Pakete und Knoten von ROS  starten
+ur_robot_driver: Name des Paketes, das gestartet werden soll
+ur_control.launch.py: Launchdatei
+ur_type:=ur5e: Argument für die Launchdatei als den Typ des Roboters
+robot_ip:= IP: Ip-Adresse des Roboters
+initial_trajectory_controller: Typ des Trajektor-Datei
+launch_rviz:=false: Ob das Programm "rviz" für die Virtzalisierung starten oder nicht
+headless_mode:=false:Mit oder ohne Grafische Oberfläche statten
+
+Auf dem Tech-Pendant das Programm external.urp laden
+
+-Node build + starten-
+source /opt/ros/humble/setup.bash -> Umbebungsvariablen laden
+
+colcon build --packages-select ur_move -> Workspace neu bauen
+
+source install/setup.bash -> Terminal neu vorbereiten
+
+python3 src/ur_move/ur_move/test_trajectory.py -> Die Node ausführen
+
+-Troubleshooting-
+--per SSH--
+ssh root@192.168.1.7 => easybot
+--per ping--
+ping <IP-Adresse>
+--alte Builds löschen--
+rm -rf ws-build => bild/, install/, log/ werden gelöscht
+
+--Controller aktivieren--
+Fallst der Controller nicht richtig aktiviert wurde oder neu gesetz wurde
+ros2 control set_controller_state scaled_joint_trajectory_controller active
+
+Controller überürüfen
+ros2 control list_controllers
+
+Controller nicht gleichzeitig aktiviert
+ros2 control set_controller_state joint_trajectory_controller inactive
+
+
+

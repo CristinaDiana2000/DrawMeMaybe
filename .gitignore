@@ -16,3 +16,5 @@ LoRAs/
 __pycache__/
 venv/
 get-pip.py 
+*.log
+build/

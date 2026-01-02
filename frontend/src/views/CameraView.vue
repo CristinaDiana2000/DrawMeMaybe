@@ -249,6 +249,7 @@ function onRetake() {
 }
 
 async function onContinue() {
+  console.log("onContinue clicked");
   if (!hasPhoto.value) return;
 
   // TODO later: send photoDataUrl.value to backend before routing
@@ -257,7 +258,7 @@ async function onContinue() {
   const session_id = "test-session-123"; // TODO get real session ID
   const dataUrl = photoDataUrl.value;
   try {
-    const res = await fetch("/photo", {
+    const res = await fetch("http://localhost:8000/photo", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ session_id, data_url: dataUrl }),

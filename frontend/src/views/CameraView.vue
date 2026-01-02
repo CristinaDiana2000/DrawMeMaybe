@@ -255,7 +255,7 @@ async function onContinue() {
   // TODO later: send photoDataUrl.value to backend before routing
   // Or read from sessionStorage in the next step
 
-  const session_id = "test-session-123"; // TODO get real session ID
+  const session_id = sessionStorage.getItem("drawmemaybe_session_id");
   const dataUrl = photoDataUrl.value;
   try {
     const res = await fetch("http://localhost:8000/photo", {

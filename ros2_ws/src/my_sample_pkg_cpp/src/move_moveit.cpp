@@ -50,8 +50,9 @@ int main(int argc, char ** argv)
 		//over here, we define the orientation
 		tf2::Quaternion tf2_quart;
 
-		//create a quartion object by specifying roll, pitch, and yaw angles, these angles should be specified in radius
+		//create a quaternion object by specifying roll, pitch, and yaw angles, these angles should be specified in radius
 		tf2_quart.setRPY(0,0,-3.14/2);
+		//tf2_quart.setRPY(0,0,0);
 
 		//Convert tf2::Quaternion zu geometry_msgs::msg::Quaternion
 		geometry_msgs::msg::Quaternion msg_quart = tf2::toMsg(tf2_quart);
@@ -61,7 +62,7 @@ int main(int argc, char ** argv)
 		GoalPose.orientation = msg_quart;
 		GoalPose.position.x = 0.3;
 		GoalPose.position.y = -0.3;
-		GoalPose.position.z = 0.4;
+		GoalPose.position.z = 0.6;
 
 		MoveGroupInterface.setPoseTarget(GoalPose);
 

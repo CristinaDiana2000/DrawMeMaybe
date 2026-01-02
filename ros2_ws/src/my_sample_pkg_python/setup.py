@@ -30,6 +30,8 @@ setup(
             'haus_des_nikolaus = my_sample_pkg_python.haus_des_nikolaus:main',
             'test = my_sample_pkg_python.test:main',
             'move_moveit = my_sample_pkg_python.move_moveit:main',
+            'move_moveit_svg1 = my_sample_pkg_python.move_moveit_svg1:main',
+            'move_moveit_svg2 = my_sample_pkg_python.move_moveit_svg2:main',
         ],
     },
 )

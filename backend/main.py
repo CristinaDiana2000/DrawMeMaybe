@@ -30,6 +30,9 @@ class ConsentPayload(BaseModel):
 class SessionCompletePayload(BaseModel):
     session_id: str
 
+class ChatPayload(BaseModel):
+    user_text: str
+    
 
 @app.get("/health")
 def health_check():
@@ -75,3 +78,10 @@ def debug_sessions():
         "sessions": sessions,
         "consents": consents,
     }
+
+@app.post("/api/chat")
+async def chat_endpoint (payload: ChatPayload):
+    # Placeholder endpoint for chat functionality
+    hobbies = [payload.user_text.strip()]
+    return {"success": True, "hobbies": hobbies, "prompt": "", "exaggerations": []}
+

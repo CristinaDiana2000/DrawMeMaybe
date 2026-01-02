@@ -1,4 +1,3 @@
-# sd_pipeline/run_sd_only.py
 import json
 import random
 from pathlib import Path

@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from pathlib import Path
+import base64
 
 from .tinydb.db import create_session, save_consent, list_sessions, list_consents, complete_session
 
@@ -33,6 +35,9 @@ class SessionCompletePayload(BaseModel):
 class ChatPayload(BaseModel):
     user_text: str
     
+class PhotoPayload(BaseModel):
+    session_id: str
+    data_url: str
 
 @app.get("/health")
 def health_check():
@@ -85,3 +90,14 @@ async def chat_endpoint (payload: ChatPayload):
     hobbies = [payload.user_text.strip()]
     return {"success": True, "hobbies": hobbies, "prompt": "", "exaggerations": []}
 
+@app.post("/photo")
+async def upload_photo(payload: PhotoPayload):
+    header, _, b64data = payload.data_url.partition(",")
+    img_bytes = base64.b64decode(b64data)
+
+    folder = Path("backend/ai_image/sd_pipeline/assets")
+    folder.mkdir(parents=True, exist_ok=True)
+    img_path = folder / f"{payload.session_id}.png"
+    img_path.write_bytes(img_bytes)
+
+    return {"ok": True, "path": str(img_path)}

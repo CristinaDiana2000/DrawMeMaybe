@@ -223,7 +223,7 @@ function capturePhoto() {
   const ctx = canvas.getContext("2d");
   ctx.drawImage(video, 0, 0, w, h);
 
-  const dataUrl = canvas.toDataURL("image/jpeg", 0.9);
+  const dataUrl = canvas.toDataURL("image/png", 0.9);
   photoDataUrl.value = dataUrl;
   hasPhoto.value = true;
   errorMessage.value = "";
@@ -248,12 +248,31 @@ function onRetake() {
   startCamera();
 }
 
-function onContinue() {
+async function onContinue() {
   if (!hasPhoto.value) return;
 
   // TODO later: send photoDataUrl.value to backend before routing
   // Or read from sessionStorage in the next step
-  router.push("/chat");
+
+  const session_id = "test-session-123"; // TODO get real session ID
+  const dataUrl = photoDataUrl.value;
+  try {
+    const res = await fetch("/photo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ session_id, data_url: dataUrl }),
+    });
+
+    if (!res.ok) {
+      throw new Error(`Upload failed with status ${res.status}`);
+    }
+
+    router.push("/chat");
+  } catch (err) {
+    console.error(err);
+    errorMessage.value =
+      "Upload failed. Please check your connection and try again.";
+  }
 }
 
 onMounted(() => {

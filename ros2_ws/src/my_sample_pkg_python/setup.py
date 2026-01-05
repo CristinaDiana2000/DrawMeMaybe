@@ -11,7 +11,10 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools',
+                    'math3d',            # Hinzugefügt
+                    'svgtools',          # Hinzugefügt
+                      ],
     zip_safe=True,
     maintainer='drawmemaybe',
     maintainer_email='cristina.tutunariu@tha.de',
@@ -30,6 +33,7 @@ setup(
             'haus_des_nikolaus = my_sample_pkg_python.haus_des_nikolaus:main',
             'test = my_sample_pkg_python.test:main',
             'move_moveit = my_sample_pkg_python.move_moveit:main',
+            'move_moveit_svg2 = my_sample_pkg_python.move_moveit_svg2:main',
         ],
     },
 )

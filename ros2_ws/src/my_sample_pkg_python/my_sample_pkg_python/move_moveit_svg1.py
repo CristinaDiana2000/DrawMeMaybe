@@ -59,7 +59,7 @@ class UR5eMoveGroupNode(Node):
             i = 0
             for (path, attr) in zip(paths, attributes):
                 #stroke = attr['stroke'] #Die Farbe der Linie ist aber unwichtig
-                print "Path", i, "with color", stroke, "of length", round(path.length())
+                #print "Path", i, "with color", stroke, "of length", round(path.length())
 
                 #move_to_paint()
                 try:
@@ -67,7 +67,7 @@ class UR5eMoveGroupNode(Node):
                     #move_to_canvas()
                     send_way_points(self, paths)
                 except Exception as e:
-                    print "ERROR:", e
+                    #print "ERROR:", e
                     raw_input("Press enter to continue... ")
 
                 i += 1
@@ -212,15 +212,15 @@ class UR5eMoveGroupNode(Node):
         goal_msg.planning.options.plan_only = False
         goal_msg.planning.options.look_around = False
 
-        print "Set canvas coordinate system"
+        #print "Set canvas coordinate system"
         r.set_csys(canvas_coordinates)
 
         # TODO: check current position
-        print "  Distance to canvas:", r._get_joints_dist(j_canvas_above)
+        #print "  Distance to canvas:", r._get_joints_dist(j_canvas_above)
 
-        print "Paint path"
+        #print "Paint path"
         for sub in path.continuous_subpaths():
-            print "  Paint continuous sub path with length %smm" % (round(sub.length()))
+            #print "  Paint continuous sub path with length %smm" % (round(sub.length()))
             r.movel((sub.start.real / 1e3, sub.start.imag / 1e3, -hover, 0, 0, 0), acc=a, vel=v)
             poses = []
             acc_dist = 0

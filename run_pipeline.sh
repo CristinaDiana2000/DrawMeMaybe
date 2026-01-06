@@ -17,7 +17,7 @@ python3.12 ai_image/sd_pipeline/run_agent_only.py
 echo "=== 3) Stopping Ollama service ==="
 sudo systemctl stop ollama
 
-echo "=== 4) Running Stable Diffusion (reads JSON) ==="
-python3.12 ai_image/sd_pipeline/run_sd_only.py
+echo "=== 4) Running Gemini (reads JSON) ==="
+python3.12 ai_image/sd_pipeline/run_gemini_only.py
 
 echo "=== Done ==="

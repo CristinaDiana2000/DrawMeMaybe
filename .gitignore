@@ -18,6 +18,7 @@ venv/
 get-pip.py 
 *.log
 build/
+start_backend.sh
 src/assets/shape_predictor_68_face_landmarks.dat
 node_modules/
 __pycache__/

@@ -11,6 +11,8 @@ setup.py
 my_sample_pkg_python/__init__.py
 my_sample_pkg_python/haus_des_nikolaus.py
 my_sample_pkg_python/move_moveit.py
+my_sample_pkg_python/move_moveit_svg1.py
+my_sample_pkg_python/move_moveit_svg2.py
 my_sample_pkg_python/move_to_home.py
 my_sample_pkg_python/move_to_home_traj.py
 my_sample_pkg_python/spline_20cm.py

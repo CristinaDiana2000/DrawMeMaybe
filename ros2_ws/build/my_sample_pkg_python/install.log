@@ -1,14 +1,18 @@
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/move_moveit.py
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/move_moveit_svg1.py
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/haus_des_nikolaus.py
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/test.py
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/move_moveit_svg2.py
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/test_node.py
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/move_to_home_traj.py
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/move_to_home.py
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/__init__.py
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/spline_20cm.py
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/__pycache__/move_moveit.cpython-310.pyc
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/__pycache__/move_moveit_svg1.cpython-310.pyc
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/__pycache__/haus_des_nikolaus.cpython-310.pyc
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/__pycache__/test.cpython-310.pyc
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/__pycache__/move_moveit_svg2.cpython-310.pyc
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/__pycache__/test_node.cpython-310.pyc
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/__pycache__/move_to_home_traj.cpython-310.pyc
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/__pycache__/move_to_home.cpython-310.pyc
@@ -25,6 +29,7 @@
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python-0.0.0-py3.10.egg-info/requires.txt
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python/haus_des_nikolaus
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python/move_moveit
+/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python/move_moveit_svg2
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python/move_to_home
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python/move_to_home_traj
 /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python/test

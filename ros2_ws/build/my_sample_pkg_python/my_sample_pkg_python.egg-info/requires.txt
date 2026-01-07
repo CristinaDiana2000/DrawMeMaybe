@@ -1,4 +1,6 @@
+math3d
 setuptools
+svgtools
 
 [test]
 pytest

@@ -1,0 +1,5 @@
+  File "/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/move_moveit.py", line 7
+    from moveit
+               ^
+SyntaxError: invalid syntax
+

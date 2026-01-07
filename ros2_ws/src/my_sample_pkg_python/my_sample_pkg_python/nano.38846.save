@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import Pose
+from moveit_py.move_group_interface import MoveGroupInterface
+import numpy as np
+
+
+class DrawLineNode(Node):
+
+    def __init__(self):
+        super().__init__('draw_line_node')
+
+        self.get_logger().info("Starte MoveIt2 für UR5e...")
+
+        # MoveGroup für UR5e (in MoveIt2 UR5 / UR5e: "ur_manipulator" oder "manipulator")
+        self.move_group = MoveGroupInterface("manipulator", "ur5e_robot")
+
+        # Pose am Anfang holen
+        current_pose = self.move_group.get_current_pose().pose
+        self.get_logger().info(f"Aktuelle Pose: {current_pose}")
+
+        # 10 cm Linie in x-Richtung
+        line_length = 0.10
+        
+        # Kartesische Wegpunkte definieren
+        waypoints = []
+
+        target_pose = Pose()
+        target_pose.position.x = current_pose.position.x + line_length
+        target_pose.position.y = current_pose.position.y
+        target_pose.position.z = current_pose.position.z
+        target_pose.orientation = current_pose.orientation
+
+        waypoints.append(target_pose)
+
+        self.get_logger().info("Berechne kartesischen Pfad...")
+
+        # Kartesischer Pfad
+        (trajectory, fraction) = self.move_group.compute_cartesian_path(
+            waypoints,
+            eef_step=0.01,  # 1 cm Auflösung
+            jump_threshold=0.0
+        )
+
+        if fraction < 1.0:
+            self.get_logger().warn(f"Warnung: Pfad nur zu {fraction*100:.1f}% berechnet")
+
+        # Ausführen
+        self.get_logger().info("Führe Bewegung aus...")
+        self.move_group.execute(trajectory)
+
+        self.get_logger().info("Linie gezeichnet – fertig!")
+
+        rclpy.shutdown()
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    DrawLineNode()
+
+
+if __name__ == "__main__":
+    main()

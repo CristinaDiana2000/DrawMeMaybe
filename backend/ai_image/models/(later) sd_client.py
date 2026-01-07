@@ -1,1 +1,0 @@
-#when you add Stable Diffusion / Flux

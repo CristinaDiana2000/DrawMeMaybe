@@ -1,0 +1,21 @@
+[0.402s] Invoking command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/src/launch_param_builder': PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/launch_param_builder/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/launch_param_builder build --build-base /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/launch_param_builder/build install --record /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/launch_param_builder/install.log --single-version-externally-managed install_data
+[0.500s] running egg_info
+[0.501s] writing ../../build/launch_param_builder/launch_param_builder.egg-info/PKG-INFO
+[0.501s] writing dependency_links to ../../build/launch_param_builder/launch_param_builder.egg-info/dependency_links.txt
+[0.501s] writing entry points to ../../build/launch_param_builder/launch_param_builder.egg-info/entry_points.txt
+[0.501s] writing requirements to ../../build/launch_param_builder/launch_param_builder.egg-info/requires.txt
+[0.501s] writing top-level names to ../../build/launch_param_builder/launch_param_builder.egg-info/top_level.txt
+[0.502s] reading manifest file '../../build/launch_param_builder/launch_param_builder.egg-info/SOURCES.txt'
+[0.502s] adding license file 'LICENSE'
+[0.502s] writing manifest file '../../build/launch_param_builder/launch_param_builder.egg-info/SOURCES.txt'
+[0.502s] running build
+[0.502s] running build_py
+[0.502s] running install
+[0.503s] running install_lib
+[0.504s] running install_data
+[0.504s] running install_egg_info
+[0.505s] removing '/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages/launch_param_builder-0.1.1-py3.10.egg-info' (and everything under it)
+[0.505s] Copying ../../build/launch_param_builder/launch_param_builder.egg-info to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages/launch_param_builder-0.1.1-py3.10.egg-info
+[0.505s] running install_scripts
+[0.514s] writing list of installed files to '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/launch_param_builder/install.log'
+[0.529s] Invoked command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/src/launch_param_builder' returned '0': PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/launch_param_builder/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/launch_param_builder build --build-base /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/launch_param_builder/build install --record /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/launch_param_builder/install.log --single-version-externally-managed install_data

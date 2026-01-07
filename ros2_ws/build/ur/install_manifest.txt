@@ -1,0 +1,15 @@
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ament_index/resource_index/package_run_dependencies/ur
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ament_index/resource_index/parent_prefix_path/ur
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/environment/ament_prefix_path.sh
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/environment/ament_prefix_path.dsv
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/environment/path.sh
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/environment/path.dsv
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/local_setup.bash
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/local_setup.sh
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/local_setup.zsh
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/local_setup.dsv
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/package.dsv
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ament_index/resource_index/packages/ur
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/cmake/urConfig.cmake
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/cmake/urConfig-version.cmake
+/home/ros2/DrawMeMaybe/ros2_ws/install/ur/share/ur/package.xml

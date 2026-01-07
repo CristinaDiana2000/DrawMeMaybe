@@ -1,0 +1,23 @@
+running egg_info
+writing ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/PKG-INFO
+writing dependency_links to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/dependency_links.txt
+writing entry points to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/entry_points.txt
+writing requirements to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/requires.txt
+writing top-level names to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/top_level.txt
+reading manifest file '../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/SOURCES.txt'
+writing manifest file '../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/SOURCES.txt'
+running build
+running build_py
+copying my_sample_pkg_python/move_to_home.py -> /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build/lib/my_sample_pkg_python
+running install
+running install_lib
+copying /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build/lib/my_sample_pkg_python/move_to_home.py -> /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python
+byte-compiling /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/move_to_home.py to move_to_home.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python-0.0.0-py3.10.egg-info
+running install_scripts
+Installing move_to_home script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+Installing test_node script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+writing list of installed files to '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/install.log'

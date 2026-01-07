@@ -1,0 +1,26 @@
+[0.391s] Invoking command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/src/my_sample_pkg_python': PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_sample_pkg_python build --build-base /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build install --record /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/install.log --single-version-externally-managed install_data
+[0.489s] running egg_info
+[0.489s] writing ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/PKG-INFO
+[0.489s] writing dependency_links to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/dependency_links.txt
+[0.489s] writing entry points to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/entry_points.txt
+[0.489s] writing requirements to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/requires.txt
+[0.489s] writing top-level names to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/top_level.txt
+[0.490s] reading manifest file '../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/SOURCES.txt'
+[0.490s] writing manifest file '../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/SOURCES.txt'
+[0.490s] running build
+[0.490s] running build_py
+[0.490s] copying my_sample_pkg_python/move_to_home.py -> /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build/lib/my_sample_pkg_python
+[0.491s] running install
+[0.491s] running install_lib
+[0.491s] copying /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build/lib/my_sample_pkg_python/move_to_home.py -> /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python
+[0.491s] byte-compiling /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/move_to_home.py to move_to_home.cpython-310.pyc
+[0.492s] running install_data
+[0.492s] running install_egg_info
+[0.493s] removing '/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python-0.0.0-py3.10.egg-info' (and everything under it)
+[0.493s] Copying ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python-0.0.0-py3.10.egg-info
+[0.493s] running install_scripts
+[0.502s] Installing move_to_home script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+[0.502s] Installing move_to_home_traj script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+[0.502s] Installing test_node script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+[0.502s] writing list of installed files to '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/install.log'
+[0.523s] Invoked command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/src/my_sample_pkg_python' returned '0': PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_sample_pkg_python build --build-base /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build install --record /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/install.log --single-version-externally-managed install_data

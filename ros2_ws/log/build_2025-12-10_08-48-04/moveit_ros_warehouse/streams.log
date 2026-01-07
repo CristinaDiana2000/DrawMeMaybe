@@ -1,0 +1,142 @@
+[0.010s] Invoking command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake /home/drawmemaybe/DrawMeMaybe/ros2_ws/src/moveit2/moveit_ros/warehouse -DCMAKE_INSTALL_PREFIX=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse
+[0.033s] -- The C compiler identification is GNU 11.4.0
+[0.056s] -- The CXX compiler identification is GNU 11.4.0
+[0.059s] -- Detecting C compiler ABI info
+[0.088s] -- Detecting C compiler ABI info - done
+[0.091s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.091s] -- Detecting C compile features
+[0.091s] -- Detecting C compile features - done
+[0.093s] -- Detecting CXX compiler ABI info
+[0.126s] -- Detecting CXX compiler ABI info - done
+[0.129s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.129s] -- Detecting CXX compile features
+[0.130s] -- Detecting CXX compile features - done
+[0.130s] -- Found moveit_common: 2.5.9 (/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common/share/moveit_common/cmake)
+[0.131s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.199s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.266s] [0mmoveit_ros_warehouse: You did not request a specific build type: Choosing 'Release' for maximum performance[0m
+[0.266s] -- Found rclcpp: 16.0.16 (/opt/ros/humble/share/rclcpp/cmake)
+[0.285s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.287s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.291s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.296s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.303s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.321s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.323s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.356s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.367s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.386s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.390s] -- Looking for pthread.h
+[0.431s] -- Looking for pthread.h - found
+[0.431s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.470s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.470s] -- Found Threads: TRUE  
+[0.490s] -- Found moveit_core: 2.5.9 (/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/share/moveit_core/cmake)
+[0.505s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[0.524s] -- Found parameter_traits: 0.5.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[0.529s] -- Found rclcpp_lifecycle: 16.0.16 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[0.539s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem 
+[0.576s] -- library: /usr/lib/x86_64-linux-gnu/libcurl.so
+[0.603s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[0.603s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.703s] -- Found warehouse_ros: 2.0.5 (/opt/ros/humble/share/warehouse_ros/cmake)
+[0.706s] -- Found moveit_ros_planning: 2.5.9 (/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning/share/moveit_ros_planning/cmake)
+[0.709s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono 
+[0.720s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options 
+[0.722s] -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+[0.765s] -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+[0.765s] -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+[0.809s] -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
+[0.809s] -- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+[0.855s] -- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+[0.872s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.879s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.879s] -- Configured cppcheck include dirs: /home/drawmemaybe/DrawMeMaybe/ros2_ws/src/moveit2/moveit_ros/warehouse/include
+[0.879s] -- Configured cppcheck exclude dirs and/or files: 
+[0.879s] -- Added test 'lint_cmake' to check CMake code style
+[0.879s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.880s] -- Added test 'xmllint' to check XML markup files
+[0.880s] -- Configuring done
+[0.930s] -- Generating done
+[0.953s] -- Build files have been written to: /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse
+[0.966s] Invoked command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse' returned '0': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake /home/drawmemaybe/DrawMeMaybe/ros2_ws/src/moveit2/moveit_ros/warehouse -DCMAKE_INSTALL_PREFIX=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse
+[0.967s] Invoking command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse -- -j24 -l24
+[1.008s] [ 15%] [32mBuilding CXX object CMakeFiles/moveit_warehouse.dir/src/state_storage.cpp.o[0m
+[1.008s] [ 15%] [32mBuilding CXX object CMakeFiles/moveit_warehouse.dir/src/trajectory_constraints_storage.cpp.o[0m
+[1.008s] [ 15%] [32mBuilding CXX object CMakeFiles/moveit_warehouse.dir/src/planning_scene_storage.cpp.o[0m
+[1.008s] [ 25%] [32mBuilding CXX object CMakeFiles/moveit_warehouse.dir/src/moveit_message_storage.cpp.o[0m
+[1.009s] [ 25%] [32mBuilding CXX object CMakeFiles/moveit_warehouse.dir/src/warehouse_connector.cpp.o[0m
+[1.009s] [ 30%] [32mBuilding CXX object CMakeFiles/moveit_warehouse.dir/src/constraints_storage.cpp.o[0m
+[1.013s] [ 35%] [32mBuilding CXX object CMakeFiles/moveit_warehouse.dir/src/planning_scene_world_storage.cpp.o[0m
+[14.278s] [ 40%] [32m[1mLinking CXX shared library libmoveit_warehouse.so[0m
+[14.566s] [ 40%] Built target moveit_warehouse
+[14.580s] [ 65%] [32mBuilding CXX object CMakeFiles/moveit_warehouse_save_as_text.dir/src/save_as_text.cpp.o[0m
+[14.580s] [ 65%] [32mBuilding CXX object CMakeFiles/moveit_save_to_warehouse.dir/src/save_to_warehouse.cpp.o[0m
+[14.580s] [ 65%] [32mBuilding CXX object CMakeFiles/moveit_warehouse_broadcast.dir/src/broadcast.cpp.o[0m
+[14.580s] [ 65%] [32mBuilding CXX object CMakeFiles/moveit_warehouse_services.dir/src/warehouse_services.cpp.o[0m
+[14.580s] [ 65%] [32mBuilding CXX object CMakeFiles/moveit_init_demo_warehouse.dir/src/initialize_demo_db.cpp.o[0m
+[14.581s] [ 70%] [32mBuilding CXX object CMakeFiles/moveit_warehouse_import_from_text.dir/src/import_from_text.cpp.o[0m
+[19.537s] [ 75%] [32m[1mLinking CXX executable moveit_warehouse_services[0m
+[19.734s] [ 75%] Built target moveit_warehouse_services
+[21.229s] [ 80%] [32m[1mLinking CXX executable moveit_init_demo_warehouse[0m
+[21.485s] [ 80%] Built target moveit_init_demo_warehouse
+[21.782s] [ 85%] [32m[1mLinking CXX executable moveit_warehouse_save_as_text[0m
+[21.967s] [ 90%] [32m[1mLinking CXX executable moveit_warehouse_import_from_text[0m
+[22.079s] [ 90%] Built target moveit_warehouse_save_as_text
+[22.252s] [ 90%] Built target moveit_warehouse_import_from_text
+[22.313s] [ 95%] [32m[1mLinking CXX executable moveit_warehouse_broadcast[0m
+[22.505s] [ 95%] Built target moveit_warehouse_broadcast
+[28.813s] [100%] [32m[1mLinking CXX executable moveit_save_to_warehouse[0m
+[29.006s] [100%] Built target moveit_save_to_warehouse
+[29.011s] Invoked command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse' returned '0': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse -- -j24 -l24
+[29.012s] Invoking command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse
+[29.015s] -- Install configuration: "Release"
+[29.015s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_save_to_warehouse
+[29.016s] -- Set runtime path of "/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_save_to_warehouse" to ""
+[29.016s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_warehouse_broadcast
+[29.016s] -- Set runtime path of "/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_warehouse_broadcast" to ""
+[29.016s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_warehouse_import_from_text
+[29.016s] -- Set runtime path of "/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_warehouse_import_from_text" to ""
+[29.016s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_warehouse_save_as_text
+[29.016s] -- Set runtime path of "/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_warehouse_save_as_text" to ""
+[29.016s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_init_demo_warehouse
+[29.016s] -- Set runtime path of "/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_init_demo_warehouse" to ""
+[29.016s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_warehouse_services
+[29.017s] -- Set runtime path of "/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/moveit_ros_warehouse/moveit_warehouse_services" to ""
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit/warehouse
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit/warehouse/moveit_message_storage.h
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit/warehouse/trajectory_constraints_storage.h
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit/warehouse/warehouse_connector.h
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit/warehouse/planning_scene_storage.h
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit/warehouse/planning_scene_world_storage.h
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit/warehouse/state_storage.h
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit/warehouse/constraints_storage.h
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/include/moveit_warehouse_export.h
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/libmoveit_warehouse.so.2.5.9
+[29.017s] -- Set runtime path of "/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/libmoveit_warehouse.so.2.5.9" to ""
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/lib/libmoveit_warehouse.so
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/environment/library_path.sh
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/environment/library_path.dsv
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/ament_index/resource_index/package_run_dependencies/moveit_ros_warehouse
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/ament_index/resource_index/parent_prefix_path/moveit_ros_warehouse
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/environment/ament_prefix_path.sh
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/environment/ament_prefix_path.dsv
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/environment/path.sh
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/environment/path.dsv
+[29.017s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/local_setup.bash
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/local_setup.sh
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/local_setup.zsh
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/local_setup.dsv
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/package.dsv
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/ament_index/resource_index/packages/moveit_ros_warehouse
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/cmake/export_moveit_ros_warehouseExport.cmake
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/cmake/export_moveit_ros_warehouseExport-release.cmake
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/cmake/ConfigExtras.cmake
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/cmake/ament_cmake_export_targets-extras.cmake
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/cmake/ament_cmake_export_dependencies-extras.cmake
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/cmake/moveit_ros_warehouseConfig.cmake
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/cmake/moveit_ros_warehouseConfig-version.cmake
+[29.018s] -- Installing: /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_warehouse/share/moveit_ros_warehouse/package.xml
+[29.019s] Invoked command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse' returned '0': AMENT_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_moveit_config:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_pr2_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_resources_panda_description:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_common:/opt/ros/humble LD_LIBRARY_PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_planning/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_ros_occupancy_map_monitor/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/lib:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/lib:${LD_LIBRARY_PATH} PATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_core/bin:${PATH} PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/srdfdom/local/lib/python3.10/dist-packages:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/launch_param_builder/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/moveit_ros_warehouse

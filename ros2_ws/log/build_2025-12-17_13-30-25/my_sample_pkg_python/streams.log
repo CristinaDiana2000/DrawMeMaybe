@@ -1,0 +1,29 @@
+[0.399s] Invoking command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/src/my_sample_pkg_python': PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_sample_pkg_python build --build-base /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build install --record /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/install.log --single-version-externally-managed install_data
+[0.497s] running egg_info
+[0.497s] writing ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/PKG-INFO
+[0.497s] writing dependency_links to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/dependency_links.txt
+[0.497s] writing entry points to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/entry_points.txt
+[0.497s] writing requirements to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/requires.txt
+[0.497s] writing top-level names to ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/top_level.txt
+[0.498s] reading manifest file '../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/SOURCES.txt'
+[0.499s] writing manifest file '../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info/SOURCES.txt'
+[0.499s] running build
+[0.499s] running build_py
+[0.499s] copying my_sample_pkg_python/move_moveit.py -> /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build/lib/my_sample_pkg_python
+[0.499s] running install
+[0.499s] running install_lib
+[0.499s] copying /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build/lib/my_sample_pkg_python/move_moveit.py -> /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python
+[0.500s] byte-compiling /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python/move_moveit.py to move_moveit.cpython-310.pyc
+[0.500s] running install_data
+[0.500s] running install_egg_info
+[0.501s] removing '/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python-0.0.0-py3.10.egg-info' (and everything under it)
+[0.501s] Copying ../../build/my_sample_pkg_python/my_sample_pkg_python.egg-info to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages/my_sample_pkg_python-0.0.0-py3.10.egg-info
+[0.501s] running install_scripts
+[0.512s] Installing haus_des_nikolaus script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+[0.512s] Installing move_moveit script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+[0.512s] Installing move_to_home script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+[0.512s] Installing move_to_home_traj script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+[0.512s] Installing test script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+[0.512s] Installing test_node script to /home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/my_sample_pkg_python
+[0.513s] writing list of installed files to '/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/install.log'
+[0.527s] Invoked command in '/home/drawmemaybe/DrawMeMaybe/ros2_ws/src/my_sample_pkg_python' returned '0': PYTHONPATH=/home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/drawmemaybe/DrawMeMaybe/ros2_ws/install/my_sample_pkg_python/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_sample_pkg_python build --build-base /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/build install --record /home/drawmemaybe/DrawMeMaybe/ros2_ws/build/my_sample_pkg_python/install.log --single-version-externally-managed install_data

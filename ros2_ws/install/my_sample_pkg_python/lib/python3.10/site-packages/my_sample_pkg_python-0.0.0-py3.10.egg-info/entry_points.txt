@@ -1,6 +1,7 @@
 [console_scripts]
 haus_des_nikolaus = my_sample_pkg_python.haus_des_nikolaus:main
 move_moveit = my_sample_pkg_python.move_moveit:main
+move_moveit_svg2 = my_sample_pkg_python.move_moveit_svg2:main
 move_to_home = my_sample_pkg_python.move_to_home:main
 move_to_home_traj = my_sample_pkg_python.move_to_home_traj:main
 test = my_sample_pkg_python.test:main
